@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You &amp; Farewell — Nitin Singh</title>
+<style>
+  :root{ --ink:#17365D; --accent:#2F5597; --accent2:#5B9BD5; --paper:#ffffff; --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,Arial,sans-serif;color:#1f2a3a;min-height:100vh;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));padding:32px 18px 60px;
+  }
+  .wrap{max-width:1140px;margin:0 auto}
+  header{text-align:center;color:#fff;margin-bottom:20px;animation:rise .8s both}
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:12px;color:#bcd6f0;font-weight:700}
+  header h1{font-size:34px;margin:10px 0 6px;line-height:1.15}
+  header p{max-width:730px;margin:8px auto 0;font-size:16px;line-height:1.7;color:#dbe7f4}
+  .toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 6px}
+  .toolbar input{width:min(440px,90vw);padding:13px 16px;border:none;border-radius:30px;font-size:15px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .toolbar input:focus{outline:2px solid var(--accent2)}
+  .count{text-align:center;color:#bcd6f0;font-size:13px;margin-bottom:26px}
+
+  .section{margin-bottom:34px;animation:rise .7s both}
+  .section-head{display:flex;align-items:center;gap:12px;margin:0 4px 16px}
+  .section-head .bar{height:26px;width:6px;border-radius:4px;background:linear-gradient(180deg,var(--accent2),var(--accent))}
+  .section-head h2{color:#fff;font-size:20px;font-weight:700}
+  .section-head .chip{font-size:12px;color:#0f2027;background:#bcd6f0;padding:3px 10px;border-radius:20px;font-weight:600}
+  .section-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(188,214,240,.6),transparent)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .card{position:relative;background:var(--paper);border-radius:18px;padding:22px;
+    box-shadow:0 18px 46px rgba(0,0,0,.28);overflow:hidden;transition:.25s;cursor:pointer;min-height:190px}
+  .card:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(0,0,0,.4)}
+  .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .top{display:flex;align-items:center;gap:12px}
+  .avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:#fff;font-size:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));flex-shrink:0}
+  .name{font-size:18px;font-weight:700;color:var(--ink);line-height:1.2}
+  .role{font-size:12px;color:#7a8290;margin-top:2px}
+
+  .msg-wrap{margin-top:14px;position:relative}
+  .msg{font-size:15px;line-height:1.65;color:#33404f;white-space:pre-line;
+    max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease,opacity .4s ease}
+  .card.open .msg{max-height:400px;opacity:1;margin-top:2px}
+  .prompt{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;font-weight:600;
+    color:var(--accent);background:#f0f6fd;border:1px dashed #b9d0ea;padding:9px 14px;border-radius:22px;transition:.25s}
+  .card:hover .prompt{background:#e3eefb}
+  .card.open .prompt{display:none}
+  .tag{position:absolute;top:16px;right:16px;font-size:16px;opacity:.5}
+  .card.open .tag{opacity:1}
+
+  .noresult{color:#dbe7f4;text-align:center;padding:30px;font-size:15px}
+  .hidden{display:none}
+  footer{margin-top:44px;text-align:center;color:#fff}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#5B9BD5,transparent);margin:26px auto;max-width:400px}
+  .sign{font-family:'Segoe Script','Brush Script MT',cursive;font-size:30px}
+  .meta{font-size:13px;color:#bcd6f0;margin-top:2px}
+  .contacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .contacts a{font-size:13px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.4);
+    padding:8px 15px;border-radius:22px;transition:.2s}
+  .contacts a:hover{background:#fff;color:var(--accent)}
+  .confetti{position:fixed;top:-10px;width:8px;height:13px;opacity:.9;animation:fall linear forwards;z-index:5}
+  @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Thank you &amp; farewell</div>
+    <h1>It's been an incredible journey 🚀</h1>
+    <p>After a wonderful chapter at 3i Infotech, I'm moving on to my next adventure. I've left a little personal note for the people I've had the privilege to work with — grouped by team. Find your card and <strong>tap it</strong> to open your note. 💙</p>
+    <div class="toolbar">
+      <input id="search" type="text" placeholder="🔎 Type your name to find your note…" oninput="filter()">
+    </div>
+    <div class="count" id="count"></div>
+  </header>
+
+  <div id="sections"></div>
+  <div class="noresult hidden" id="noresult">No note found for that name — but here's a big thank-you to you too! 💙</div>
+
+  <footer>
+    <div class="divider"></div>
+    <div class="sign">Nitin Singh</div>
+    <div class="meta">Senior Manager – Partnerships &amp; Alliances</div>
+    <div class="contacts">
+      <a href="mailto:nitin.singh.personal@example.com?subject=Staying in touch">✉️ Email me</a>
+      <a href="https://www.linkedin.com/" target="_blank">in LinkedIn</a>
+      <a href="tel:+919867405566">📞 +91 98674 05566</a>
+    </div>
+    <p class="meta" style="margin-top:18px">A personal thank-you page — nothing to sign in, nothing to download.</p>
+  </footer>
+</div>
+
+<script>
+  /* ============ EDIT HERE — grouped by team/BU ============
+     Each group has a "team" label and a list of people.
+     Add/remove teams or people freely.
+  ========================================================= */
+  const GROUPS = [
+    { team:"Leadership &amp; Mentors", people:[
+      {name:"Amitav Sarkar", role:"Alliances / Mentor", msg:"Thank you for being such a steady mentor and sounding board. Our twice-weekly syncs shaped how I think about alliances. I've learned a great deal from your calm, structured leadership — and I'll carry it forward."},
+      {name:"Shirish Kalamkar", role:"Technology Leadership", msg:"Grateful for your trust and the strategic guidance you gave the P&A function. You always pushed for governance and rigor, and it made the whole ecosystem stronger. Thank you, sir."}
+    ]},
+    { team:"Sales &amp; Business Development", people:[
+      {name:"Hursh Chandhok", role:"Business Development – MEA", msg:"Working across geographies with you — Kenya Re, Databricks, and beyond — was a real highlight. Thank you for the energy and the partnership. Let's stay in touch!"},
+      {name:"Prakash Jha", role:"Sales / BD", msg:"Thank you for always jumping in on the tough OEM and customer conversations. Your hustle made deals move. It's been a pleasure working alongside you."},
+      {name:"Amit Kumar", role:"Sales Enablement", msg:"Thank you for the seamless coordination across so many pursuits. Your support made a real difference. Wishing you continued success."}
+    ]},
+    { team:"PreSales &amp; Solutioning", people:[
+      {name:"Shivani Rai", role:"Sales Enablement / PreSales", msg:"From CoE mapping to late RFP nights — you made the tough stretches fun. Thank you for being a dependable partner-in-crime. This place is lucky to have you."},
+      {name:"Poonam Deshmukh", role:"PreSales", msg:"The MAF marathons, the RFP scrambles, the Red Hat saga — we got through all of it together. Thank you for your patience and precision. Truly appreciated."}
+    ]},
+    { team:"Infrastructure Services &amp; DIMS", people:[
+      {name:"Abhishek Pandey", role:"Infra Services / DIMS", msg:"Thanks for the solid collaboration on the infra and DIMS side. Your clarity on solutions made my alliance job so much easier. Wishing you the very best."},
+      {name:"Renjeev P S", role:"Infra Services", msg:"Appreciate all the support on the infrastructure services front. Dependable, sharp, and always willing to help — thank you for everything."}
+    ]},
+    { team:"AAA", people:[
+      {name:"Vineet Kumar", role:"AAA", msg:"From leads to enablement, thank you for the constant teamwork. It's been genuinely great partnering with you. Stay in touch!"}
+    ]},
+    { team:"To Everyone Else 💙", people:[
+      {name:"Everyone at 3i Infotech", role:"My extended team", msg:"To everyone I worked with — thank you for the trust, the grind, and the wins. We built something real together. Keep raising the bar, and don't be a stranger!"}
+    ]}
+  ];
+  /* ======================================================= */
+
+  const sectionsEl=document.getElementById('sections');
+  let totalPeople=0;
+  function initials(n){return n.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();}
+
+  function build(filterText=''){
+    sectionsEl.innerHTML='';
+    const q=filterText.trim().toLowerCase();
+    let shown=0;
+    GROUPS.forEach((g,gi)=>{
+      const matches=g.people.filter(p=>p.name.toLowerCase().includes(q)||(p.role||'').toLowerCase().includes(q)||g.team.toLowerCase().includes(q));
+      if(matches.length===0) return;
+      shown+=matches.length;
+      const sec=document.createElement('div');sec.className='section';sec.style.animationDelay=(gi*0.04)+'s';
+      sec.innerHTML=`<div class="section-head"><span class="bar"></span><h2>${g.team}</h2>
+        <span class="chip">${matches.length} note${matches.length>1?'s':''}</span><span class="section-line"></span></div>`;
+      const grid=document.createElement('div');grid.className='grid';
+      matches.forEach((p,i)=>{
+        const c=document.createElement('div');c.className='card';c.style.animationDelay=(i*0.05)+'s';
+        c.innerHTML=`<span class="tag">💌</span>
+          <div class="top"><div class="avatar">${initials(p.name)}</div>
+            <div><div class="name">${p.name}</div><div class="role">${p.role||''}</div></div></div>
+          <div class="msg-wrap"><div class="prompt">✨ Tap to open your note</div>
+            <div class="msg">${p.msg}</div></div>`;
+        c.addEventListener('click',()=>{
+          const opening=!c.classList.contains('open');
+          c.classList.toggle('open');
+          if(opening) burst();
+        });
+        grid.appendChild(c);
+      });
+      sec.appendChild(grid);sectionsEl.appendChild(sec);
+    });
+    document.getElementById('noresult').classList.toggle('hidden', shown>0);
+  }
+  function filter(){ build(document.getElementById('search').value); }
+
+  GROUPS.forEach(g=>totalPeople+=g.people.length);
+  document.getElementById('count').textContent=`${totalPeople} personal notes across ${GROUPS.length} teams 💌`;
+  build();
+
+  function burst(){
+    const colors=['#5B9BD5','#2F5597','#17365D','#f4c430','#e57373'];
+    for(let i=0;i<50;i++){
+      const c=document.createElement('div');c.className='confetti';
+      c.style.left=Math.random()*100+'vw';
+      c.style.background=colors[i%colors.length];
+      c.style.animationDuration=(2+Math.random()*2)+'s';
+      c.style.animationDelay=(Math.random()*.4)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4200);
+    }
+  }
+</script>
+</body>
+</html>
