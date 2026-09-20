@@ -67,8 +67,6 @@ header p{max-width:660px;margin:0 auto;font-size:16.5px;line-height:1.75;color:v
 .card .env{position:absolute;top:16px;right:16px;font-size:15px;opacity:.55;transition:.3s}
 .card:hover .env{opacity:1;transform:rotate(-8deg) scale(1.15)}
 .card .play{position:absolute;top:16px;right:42px;font-size:13px;opacity:.6}
-
-/* ---------- oops / no result ---------- */
 .oops{max-width:620px;margin:10px auto 0;background:rgba(255,255,255,.07);border:1px solid var(--stroke);
  backdrop-filter:blur(14px);border-radius:22px;padding:34px 30px;text-align:center;
  animation:pop .45s cubic-bezier(.2,.9,.3,1.2) both;position:relative;overflow:hidden}
@@ -88,7 +86,6 @@ header p{max-width:660px;margin:0 auto;font-size:16.5px;line-height:1.75;color:v
 .opt span{display:block;color:var(--muted);font-size:12.5px;line-height:1.5}
 .oops .ps{font-size:12.5px;color:#7e99b8;margin-top:20px;font-style:italic}
 .hidden{display:none}
-
 .scrim{position:fixed;inset:0;background:rgba(4,10,18,.65);backdrop-filter:blur(4px);z-index:40;
  opacity:0;pointer-events:none;transition:opacity .35s}
 .scrim.show{opacity:1;pointer-events:auto}
@@ -207,7 +204,6 @@ footer{margin-top:60px;text-align:center;position:relative;z-index:2}
 
   <div class="grid" id="grid"></div>
 
-  <!-- oops / missed you -->
   <div class="oops hidden" id="noresult">
     <span class="em">🙈</span>
     <h3>Oops… it seems I missed you!</h3>
@@ -289,316 +285,322 @@ const FORMSPREE_ID = "mnpnapnw";
 /* Shown when a person has no custom note yet */
 const DEFAULT_MSG = "Thank you for being part of my journey at 3i Infotech. Whether we chased RFPs, solved a last-minute crisis, or just shared a chai and a laugh — it mattered. I'm grateful for you, and I hope our paths cross again soon. 💙";
 
-/* ===== PEOPLE (compiled from your Excel) =====
-   media accepts:
-     "gifs/name.gif"      -> image
-     "videos/name.mp4"    -> video (also .webm / .mov)
-     ""                   -> nothing
-   Filenames are CASE-SENSITIVE on GitHub Pages.
-=============================================== */
+/* ============================================================
+   PEOPLE
+   Every card has an open "media" slot, pre-filled with
+   "PASTE_MEDIA_HERE". Leave it as-is to show nothing,
+   or replace it with one of:
+
+     "gifs/Name.gif"       -> image  (GIF / PNG / JPG)
+     "videos/name.mp4"     -> video  (MP4 / WEBM / MOV)
+     "https://.../x.gif"   -> direct public URL
+
+   Placeholders render NOTHING, so the page always looks clean.
+   NOTE: filenames are CASE-SENSITIVE on GitHub Pages.
+============================================================ */
 const PEOPLE = [
  {
   "name": "Avinash Kodwaney",
   "role": "Vice President - Sales",
-  "msg": "Whenever you, me and Presales end up in the same room, the conversation goes exactly like this 👆 — every single time. Thank you for the energy, the push and the good humour. It's been a genuine pleasure!",
-  "media": "CVideos/Avinash.mp4"
+  "msg": "Whenever you, me and Presales end up in the same room, the conversation goes exactly like this 👆 — every single time, without fail.\n\nJokes apart — thank you for being such a big part of my journey at 3i Infotech. It genuinely means a lot, and our bond has only grown stronger since the day we met. Wishing you the very best always!",
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Gaurang Gore",
   "role": "Associate Vice President - PMO",
-  "msg": "Someone to Gaurang: “Murgi pehle aayi ya anda?”\nGaurang: “Flowbit.”\nSomeone: **processing the response**\nGaurang again: “Deal size 3Cr ke upar hai ya 3Cr ke neeche?”\nWhen it comes to Flowbit — there is only one Gaurang. Thank you for everything!",
+  "msg": "Someone to Gaurang: “Murgi pehle aayi ya anda?”\nGaurang: “Flowbit.”\nSomeone: **processing the response**\nGaurang again: “Deal size 3Cr ke upar hai ya 3Cr ke neeche?”\nWhen it comes to Flowbit, there is only one Gaurang 👆\n\nJokes apart — those morning and evening greetings, the tea breaks, the lunch breaks; we always had each other's company. I'll genuinely miss that daily rhythm. Thank you for everything!",
   "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Charul Vinodiya",
   "role": "Associate Manager - Sales",
-  "msg": "",
-  "media": ""
+  "msg": "This is exactly you, on a funny note 👆 Don't even try to deny it!\n\nJokes apart — I loved working with you on opportunities. You are a strong head girl who holds her ground and gets things done. Keep rocking and keep shining!",
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Gourav Sangare",
   "role": "Manager - Sales",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Prakash Jha",
   "role": "Vice President - Sales",
-  "msg": "",
-  "media": ""
+  "msg": "When I look back at my time here, so many of the wins that stand out have your fingerprints on them. Thank you for the trust, the drive and the sheer conviction you brought to every pursuit — kudos to everything we cracked together. It has been a privilege working alongside you, and I'll carry a lot of what I learned from you into whatever comes next.",
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Shivani Rai",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Poonam Deshmukh",
   "role": "Bid Management",
-  "msg": "Tumne itna RFP submit kiya hai life me; ek din RFP reh jayega aur tum submit ho jaogi 😂 Thank you for the patience, the precision and the late-night saves.",
-  "media": ""
+  "msg": "Tumne itna RFP submit kiya hai life me; ek din RFP reh jayega aur tum submit ho jaogi 😂\n\nJokes apart — Poonam, I truly appreciate the hard work you put into those long, complicated RFPs and the way you hold the entire bid together. 3i Infotech is lucky to have you. Thank you for every late night and every last-minute save!",
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Sujal Rane",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Yograj Lekurwale",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Nabil Shaikh",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Glen Correia",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Avani Raj",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Amit Kumar",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Trina Singh",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Shubham Seth",
   "role": "Bid Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Amitav Sarkar",
   "role": "Associate Vice President - Partners And Alliances",
   "msg": "",
-  "media": "gifs/grateful.gif"
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Srujith Kumar",
   "role": "Associate Manager - Technology",
-  "msg": "His reaction whenever he spots a new employee at 3i 👆 Never change, Srujith. Thank you for all the help and the laughs!",
+  "msg": "His reaction whenever he spots a new employee at 3i 👆 Never change, Srujith!\n\nJokes apart — thank you for always being just one call away whenever something needed fixing, and for all the laughs along the way. Wishing you the very best!",
   "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Domnik Bangera",
   "role": "Associate Manager - Administration",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Satish Saini",
   "role": "Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Ganesh Mathur",
   "role": "Associate Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Surender Sharma",
   "role": "Senior Manager - Project Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Gaurav Arora",
   "role": "Senior Manager - Project Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Raghavendra Singh",
   "role": "Manager - Project",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Mangesh Shelar",
   "role": "Associate Manager - Logistics",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Bachchanram Jaiswal",
   "role": "Lead Engineer - Technical",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Saraswathy Ravishankar",
   "role": "Associate Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Rizwan B",
   "role": "Deputy Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Abhishek Pandey",
   "role": "Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Makarand Mohandas",
   "role": "Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Ramesh Hodge",
   "role": "Manager - Project",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Chandana Saha",
   "role": "Senior Engineer - Infrastructure Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Avijit Ghosh",
   "role": "Engineer - Infrastructure Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Vivek More",
   "role": "Senior Engineer - Infrastructure Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Shyam Tiwari",
   "role": "Senior Manager - Project Management",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Nawin Singh",
   "role": "Lead Engineer - Project",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Rajnish Sinha",
   "role": "Manager - Technical Administration",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Vineet Kumar",
   "role": "Associate Vice President - Software Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Sanket Rane",
   "role": "Vice President - ADMS & Testing CoE",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Nitin Jaitly",
   "role": "Associate Vice President - IT Infrastructure",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Chirag Manjrawala",
   "role": "Senior Manager - IT Infrastructure",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Manish Falwaria",
   "role": "Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Austin Rodrigues",
   "role": "Deputy Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Saikat Banarjee",
   "role": "Deputy Vice President - Delivery",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Rajlaxmi Nair",
   "role": "Associate Vice President - Procurement",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Shweta Juvekar",
   "role": "Manager - Procurement",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
-  "name": "Margrate",
+  "name": "Margrate Vibhute",
   "role": "Senior Executive - Procurement",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Sanjay Khade",
   "role": "Senior Manager - Finance and Accounting",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Sachin Tate",
   "role": "Manager - Accounts Payables",
-  "msg": "His reaction every single time I asked about OEM payments 👆 Thank you for always sorting it out in the end, Sachin!",
-  "media": "gifs/Sachin.gif"
+  "msg": "His reaction every single time I walked in asking about OEM payments 👆\n\nJokes apart — thank you for always sorting it out in the end, however tight the timeline was. Those follow-ups were never personal, I promise!",
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "Naqeeb",
   "role": "Senior Executive - Financial Planning and Analysis",
   "msg": "",
-  "media": ""
+  "media": "PASTE_MEDIA_HERE"
  },
  {
   "name": "To Everyone Else",
-  "role": "Corporate Functions",
+  "role": "",
   "msg": "To everyone I worked with at 3i Infotech — thank you for the trust, the grind and the wins. We built something real together. Keep raising the bar, and don't be a stranger!",
-  "media": "gifs/thankyou.gif"
+  "media": "PASTE_MEDIA_HERE"
  }
 ];
-/* =============================================== */
+/* ============================================================ */
 
 const safeStore={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
                  set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
@@ -614,7 +616,7 @@ const slug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 const pal=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))>>>0;return PALETTES[h%PALETTES.length];};
 const ring=n=>{const[a,b]=pal(n);return `linear-gradient(135deg,${a},${b})`;};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const hasMedia=m=>m && !/PASTE_DIRECT_GIF_URL_HERE|PASTE_MEDIA_HERE/.test(m);
+const hasMedia=m=>m && !/PASTE_MEDIA_HERE|PASTE_DIRECT_GIF_URL_HERE/.test(m);
 const isVideo=m=>/\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(m);
 
 function render(list){
@@ -682,7 +684,7 @@ function openDrawer(i){
   burst(28);
 }
 function closeDrawer(){
-  document.getElementById('dMedia').innerHTML='';   // stop video playback
+  document.getElementById('dMedia').innerHTML='';
   document.getElementById('drawer').classList.remove('show');
   document.getElementById('scrim').classList.remove('show');
   current=-1;
