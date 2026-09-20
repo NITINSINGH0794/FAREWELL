@@ -1,100 +1,769 @@
-
-
-<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
 <!DOCTYPE html>
-<html dir="ltr" class="" lang="en">
+<html lang="en">
 <head>
-    <title>Sign in to your account</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="-1">
-    <link rel="preconnect" href="https://aadcdn.msauth.net" crossorigin>
-<meta http-equiv="x-dns-prefetch-control" content="on">
-<link rel="dns-prefetch" href="//aadcdn.msauth.net">
-<link rel="dns-prefetch" href="//aadcdn.msftauth.net">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Thank You &amp; Farewell — Nitin Singh</title>
+<style>
+:root{--ink:#0d1b2a;--accent:#2F5597;--accent2:#5B9BD5;--gold:#f2b544;
+ --glass:rgba(255,255,255,.08);--stroke:rgba(255,255,255,.16);--text:#eaf1fb;--muted:#a8bdd6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);
+ min-height:100vh;background:#07131f;overflow-x:hidden;position:relative}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 18s ease-in-out infinite}
+.b1{width:520px;height:520px;background:#1f4f82;top:-140px;left:-120px}
+.b2{width:460px;height:460px;background:#7a3f8f;bottom:-160px;right:-100px;animation-delay:-6s}
+.b3{width:400px;height:400px;background:#0e6e6e;top:40%;left:55%;animation-delay:-11s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.12)}66%{transform:translate(-40px,50px) scale(.94)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:46px 20px 90px}
+header{text-align:center;margin-bottom:34px;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--stroke);
+ backdrop-filter:blur(10px);padding:7px 16px;border-radius:30px;font-size:12px;letter-spacing:2.5px;
+ text-transform:uppercase;font-weight:700;color:#cfe2f7}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:blink 1.8s infinite}
+@keyframes blink{50%{opacity:.35}}
+h1{font-size:clamp(30px,5.2vw,50px);margin:18px 0 10px;line-height:1.08;font-weight:800;letter-spacing:-.5px}
+h1 .grad{background:linear-gradient(100deg,#8ec5ff,#f2b544 55%,#ff9db0);-webkit-background-clip:text;
+ background-clip:text;-webkit-text-fill-color:transparent}
+header p{max-width:660px;margin:0 auto;font-size:16.5px;line-height:1.75;color:var(--muted)}
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.stat{background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(10px);
+ padding:10px 18px;border-radius:14px;text-align:center;min-width:96px}
+.stat b{display:block;font-size:21px;color:#fff;font-weight:800}
+.stat span{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.searchbar{position:relative;width:min(460px,92vw);margin:28px auto 8px}
+.searchbar input{width:100%;padding:15px 20px 15px 46px;border:1px solid var(--stroke);border-radius:32px;
+ font-size:15px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);color:#fff;outline:none;transition:.25s}
+.searchbar input::placeholder{color:#8fa9c6}
+.searchbar input:focus{border-color:var(--accent2);background:rgba(255,255,255,.12);box-shadow:0 0 0 4px rgba(91,155,213,.15)}
+.searchbar .ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);opacity:.7}
+.count{text-align:center;color:var(--muted);font-size:13px;margin:14px 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{position:relative;background:rgba(255,255,255,.07);border:1px solid var(--stroke);
+ backdrop-filter:blur(14px);border-radius:20px;padding:22px 20px 20px;cursor:pointer;
+ transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s,background .28s;
+ animation:rise .7s both;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;border-radius:20px;opacity:0;transition:.3s;
+ background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.14),transparent 45%)}
+.card:hover{transform:translateY(-7px);border-color:rgba(142,197,255,.5);background:rgba(255,255,255,.11);
+ box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.card:hover::after{opacity:1}
+.card .ring{width:58px;height:58px;border-radius:50%;padding:2.5px;margin-bottom:14px}
+.avatar{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-weight:800;color:#fff;font-size:20px;background:#12263b;letter-spacing:.5px}
+.card .name{font-size:17px;font-weight:700;color:#fff;line-height:1.25}
+.card .role{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.35}
+.card .peek{font-size:13px;color:#b9cde4;line-height:1.55;margin-top:12px;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;opacity:.85}
+.card .open-hint{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;
+ color:#8ec5ff;letter-spacing:.3px;transition:.25s}
+.card:hover .open-hint{gap:10px;color:#fff}
+.card .env{position:absolute;top:16px;right:16px;font-size:15px;opacity:.55;transition:.3s}
+.card:hover .env{opacity:1;transform:rotate(-8deg) scale(1.15)}
+.card .play{position:absolute;top:16px;right:42px;font-size:13px;opacity:.6}
 
-    <meta name="PageID" content="ConvergedSignIn" />
-    <meta name="SiteID" content="" />
-    <meta name="ReqLC" content="1033" />
-    <meta name="LocLC" content="en-US" />
+/* ---------- oops / no result ---------- */
+.oops{max-width:620px;margin:10px auto 0;background:rgba(255,255,255,.07);border:1px solid var(--stroke);
+ backdrop-filter:blur(14px);border-radius:22px;padding:34px 30px;text-align:center;
+ animation:pop .45s cubic-bezier(.2,.9,.3,1.2) both;position:relative;overflow:hidden}
+.oops::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+ background:linear-gradient(90deg,var(--gold),#ff9db0,var(--accent2))}
+.oops .em{font-size:50px;display:block;animation:wobble 2.6s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}75%{transform:rotate(9deg)}}
+.oops h3{font-size:22px;color:#fff;margin:12px 0 10px;font-weight:800}
+.oops p{font-size:15.2px;line-height:1.75;color:var(--muted);max-width:480px;margin:0 auto}
+.oops .opts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.opt{flex:1 1 220px;max-width:250px;background:rgba(255,255,255,.06);border:1px solid var(--stroke);
+ border-radius:16px;padding:18px 16px;text-decoration:none;transition:.25s;display:block}
+.opt:hover{transform:translateY(-5px);background:rgba(255,255,255,.13);border-color:rgba(242,181,68,.55);
+ box-shadow:0 16px 36px rgba(0,0,0,.4)}
+.opt .oi{font-size:26px;display:block;margin-bottom:8px}
+.opt b{display:block;color:#fff;font-size:14.5px;font-weight:700;margin-bottom:5px}
+.opt span{display:block;color:var(--muted);font-size:12.5px;line-height:1.5}
+.oops .ps{font-size:12.5px;color:#7e99b8;margin-top:20px;font-style:italic}
+.hidden{display:none}
 
-
-        <meta name="format-detection" content="telephone=no" />
-
-    <noscript>
-        <meta http-equiv="Refresh" content="0; URL=https://login.microsoftonline.com/jsdisabled" />
-    </noscript>
-
-    
-    
-<meta name="robots" content="none" />
-
-<script type="text/javascript" nonce='RTO-6cVeN1P8TlfqWGJWVA'>//<![CDATA[
-$Config={"fShowPersistentCookiesWarning":false,"urlMsaSignUp":"https://login.live.com/oauth20_authorize.srf?scope=openid+profile+email+offline_access\u0026response_type=code\u0026client_id=51483342-085c-4d86-bf88-cf50c7252078\u0026response_mode=form_post\u0026redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa\u0026state=rQQIARAAnVNtiNv2GbfixLnzLumdB2MwNsI1lC5Xx3qzLR8LTLL0t08-yZasv2S7tFdZki1br2fJtuySfggb5MPYboyNLQn90MEYyWDN6EbIPmSwFUYg7UEDhbAPXdmgy1b2xkag7AVvX_ax7Pnw8Lz--D0P_C6ksYvY7nn0v0bkVz6PDgZY3rBW0f_YJJfdfO0Lv__a0WbqpVuXvv8D7PNXXryGrB-4o5l10Qi8mwhlx3EY7RYKxGjkD4LYMuy8t7gY2frECoORH6_GCgeDYOJFBdMa6FM3vqhHYXIHQY4R5AMEuXnisFomKizDlGiSqaA0h1dQlCA4lmYIlgUVmqmS1TJbZIsltkiQFIbmSa5UZkARr2AYjlcpBoAioEAVxyo0ywCSKZVQQFDFMk6zHIZVaJSiKa5aJdhymWLQMvnoxFNNehrb-MoFk9HS-suJ9RXHgzCI4mvpN042WXTOj4VFCwJGqcKF7Km-BAEjuRwhjIcLqMmKBuPDngOUtms3eIWvdcd2qI3tjtjpBUYtKZpLF9UJnjW4om9CuBQgwA0NK3ah5ApOL2qCMOEVvmqOVvgyDp1gVcdlwlUsH7QUrhcoRBfXOLPRVMyZ6BU5zWVmfZ9nBNxI5I4Lug5QRRy0-oqAQYVviBosynWbhZg677owkdwuLrbhQhq7qM65scUynLLsoRJu1w2OxDRXQg1cxKCrajIaFfsEL4mejPVxCbO4MBJxYWniSbcPwoVMqHuqx9cNFgQ96Ca6D5ZddI9c3W7WQK3HmaLa6TFdLxwpQOyJntg0XXuqKL25jrpzwVE9E-Nji-vJoqpOjbHoiUtGlzwwFwngqn4omyiVCE58CMfqoskynu4lDNTChgmYePUrqEXLtiIzsCazKgCOqYgKrIkz1XUZqSO3FS4Gmsc7aodvmwSYq4o6NhVVF1Vp2XUq7RVXAZpNlRMnVgdoxgIuJF9wBadLWJ7Lm4B2BYcvqZocmI5BNLUKZ2hzUlBlKOJibKrupNkRiiKUlR4HeIgm4x7roLwicjfTH0tUP0qfLw100zRIPd8vVfA8iRlmXtexUt4aWLpeKQ8svGzcT2eC0PJH5vFJ5PHJDTS9u7aW3Ux9OnUu9eQk8tqpXHbzq_fsC69Of_jF649v3btec1P3TxVq7VqvMbTiCq13xNZiVFMds9soV1s7BWpcnfiNwUQtltBIKO1dwnexowxylMkcZfijzCfvZtbX0pup7XS1hf0pg1w9nbq7_n_L-9tZ5PgTyOsbyKMNLLtuBP2J7psjM3cew_omhVJEnipbaJ7E-sV8v1-m8mjfIAmD0imL0h9tkNmM4eojL8pdeHl7ZB7EgWP527svbydedGAYq2imu1Mr2t59frvawrZfuHz58pUzHwv9Z2dST87-4eE7D26_--Yf64-fes7x9rkwwgw5EQZMiZwyDugv51alTXlikCzDZTSFMSlEyWJ46fXN1HubqZtbvz2RDbNkKpVCT_007333J6kXvnTnxtsfbnzr55-5gvzz_c9-4--_-t65a8T9h1swe_1sXXrlrXr7o3u3HhzeyP1n66VnfvHBnx9Y3_nXhw8_Mm6_ePxo469PP_OPG889-R348vb7Z9589W9l8_anhq2vP7v2m5h6-o1zyLNI7mw2rbvD3GmuytbzXHuVW76RO03jxVKtKuSOkWxaD2e5XyI0TdNVqNqGI0a6pk7N2pCmaQZIaLQUVk1aK-9r-DgeMqa9PzKWO6jgRkJ_OKzvkDauVOKFt8cHy0Usyap02GcdWx5ExT1YmBYOKSzxa7SXNMfJUtN6hR0C7uDNpBOzOtsSxvwMN_Zb41AO4IgcEsCfQaK3z2k9rCo36LFjssNxvKLA2NNCo6OyfN1bUn5YmwbM2J6UawXRq7NNgvPhpbtbuezm7Oqv1-b6K_U7P377mxuf637lva3Uk62j9NVc6t81\u0026estsfed=1\u0026uaid=8feb3ca210906000ab3da8ac3129825e\u0026signup=1\u0026lw=1\u0026fl=easi2\u0026cobrandid=11bd8083-87e0-41b5-bb78-0bc43c8a8e8a\u0026fci=00000003-0000-0ff1-ce00-000000000000\u0026wsucxt=1","urlMsaLogout":"https://login.live.com/logout.srf?iframed_by=https%3a%2f%2flogin.microsoftonline.com","urlOtherIdpForget":"https://login.live.com/forgetme.srf?iframed_by=https%3a%2f%2flogin.microsoftonline.com","showCantAccessAccountLink":true,"arrExternalTrustedRealmFederatedIdps":[{"IdpType":400,"IdpSignInUrl":"https://login.live.com/oauth20_authorize.srf?scope=openid+profile+email+offline_access\u0026response_type=code\u0026client_id=51483342-085c-4d86-bf88-cf50c7252078\u0026response_mode=form_post\u0026redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa\u0026state=rQQIARAAnVNtiNv2GbfixLnzLumdB2MwNsI1lC5Xx3qzLR8LTLL0t08-yZasv2S7tFdZki1br2fJtuySfggb5MPYboyNLQn90MEYyWDN6EbIPmSwFUYg7UEDhbAPXdmgy1b2xkag7AVvX_ax7Pnw8Lz--D0P_C6ksYvY7nn0v0bkVz6PDgZY3rBW0f_YJJfdfO0Lv__a0WbqpVuXvv8D7PNXXryGrB-4o5l10Qi8mwhlx3EY7RYKxGjkD4LYMuy8t7gY2frECoORH6_GCgeDYOJFBdMa6FM3vqhHYXIHQY4R5AMEuXnisFomKizDlGiSqaA0h1dQlCA4lmYIlgUVmqmS1TJbZIsltkiQFIbmSa5UZkARr2AYjlcpBoAioEAVxyo0ywCSKZVQQFDFMk6zHIZVaJSiKa5aJdhymWLQMvnoxFNNehrb-MoFk9HS-suJ9RXHgzCI4mvpN042WXTOj4VFCwJGqcKF7Km-BAEjuRwhjIcLqMmKBuPDngOUtms3eIWvdcd2qI3tjtjpBUYtKZpLF9UJnjW4om9CuBQgwA0NK3ah5ApOL2qCMOEVvmqOVvgyDp1gVcdlwlUsH7QUrhcoRBfXOLPRVMyZ6BU5zWVmfZ9nBNxI5I4Lug5QRRy0-oqAQYVviBosynWbhZg677owkdwuLrbhQhq7qM65scUynLLsoRJu1w2OxDRXQg1cxKCrajIaFfsEL4mejPVxCbO4MBJxYWniSbcPwoVMqHuqx9cNFgQ96Ca6D5ZddI9c3W7WQK3HmaLa6TFdLxwpQOyJntg0XXuqKL25jrpzwVE9E-Nji-vJoqpOjbHoiUtGlzwwFwngqn4omyiVCE58CMfqoskynu4lDNTChgmYePUrqEXLtiIzsCazKgCOqYgKrIkz1XUZqSO3FS4Gmsc7aodvmwSYq4o6NhVVF1Vp2XUq7RVXAZpNlRMnVgdoxgIuJF9wBadLWJ7Lm4B2BYcvqZocmI5BNLUKZ2hzUlBlKOJibKrupNkRiiKUlR4HeIgm4x7roLwicjfTH0tUP0qfLw100zRIPd8vVfA8iRlmXtexUt4aWLpeKQ8svGzcT2eC0PJH5vFJ5PHJDTS9u7aW3Ux9OnUu9eQk8tqpXHbzq_fsC69Of_jF649v3btec1P3TxVq7VqvMbTiCq13xNZiVFMds9soV1s7BWpcnfiNwUQtltBIKO1dwnexowxylMkcZfijzCfvZtbX0pup7XS1hf0pg1w9nbq7_n_L-9tZ5PgTyOsbyKMNLLtuBP2J7psjM3cew_omhVJEnipbaJ7E-sV8v1-m8mjfIAmD0imL0h9tkNmM4eojL8pdeHl7ZB7EgWP527svbydedGAYq2imu1Mr2t59frvawrZfuHz58pUzHwv9Z2dST87-4eE7D26_--Yf64-fes7x9rkwwgw5EQZMiZwyDugv51alTXlikCzDZTSFMSlEyWJ46fXN1HubqZtbvz2RDbNkKpVCT_007333J6kXvnTnxtsfbnzr55-5gvzz_c9-4--_-t65a8T9h1swe_1sXXrlrXr7o3u3HhzeyP1n66VnfvHBnx9Y3_nXhw8_Mm6_ePxo469PP_OPG889-R348vb7Z9589W9l8_anhq2vP7v2m5h6-o1zyLNI7mw2rbvD3GmuytbzXHuVW76RO03jxVKtKuSOkWxaD2e5XyI0TdNVqNqGI0a6pk7N2pCmaQZIaLQUVk1aK-9r-DgeMqa9PzKWO6jgRkJ_OKzvkDauVOKFt8cHy0Usyap02GcdWx5ExT1YmBYOKSzxa7SXNMfJUtN6hR0C7uDNpBOzOtsSxvwMN_Zb41AO4IgcEsCfQaK3z2k9rCo36LFjssNxvKLA2NNCo6OyfN1bUn5YmwbM2J6UawXRq7NNgvPhpbtbuezm7Oqv1-b6K_U7P377mxuf637lva3Uk62j9NVc6t81\u0026estsfed=1\u0026uaid=8feb3ca210906000ab3da8ac3129825e\u0026cobrandid=11bd8083-87e0-41b5-bb78-0bc43c8a8e8a\u0026fci=00000003-0000-0ff1-ce00-000000000000\u0026wsucxt=1\u0026idp_hint=github.com","DisplayName":"GitHub","Promoted":false}],"fEnableShowResendCode":true,"iShowResendCodeDelay":90000,"sSMSCtryPhoneData":"AF~Afghanistan~93!!!AX~Åland Islands~358!!!AL~Albania~355!!!DZ~Algeria~213!!!AS~American Samoa~1!!!AD~Andorra~376!!!AO~Angola~244!!!AI~Anguilla~1!!!AG~Antigua and Barbuda~1!!!AR~Argentina~54!!!AM~Armenia~374!!!AW~Aruba~297!!!AC~Ascension Island~247!!!AU~Australia~61!!!AT~Austria~43!!!AZ~Azerbaijan~994!!!BS~Bahamas~1!!!BH~Bahrain~973!!!BD~Bangladesh~880!!!BB~Barbados~1!!!BY~Belarus~375!!!BE~Belgium~32!!!BZ~Belize~501!!!BJ~Benin~229!!!BM~Bermuda~1!!!BT~Bhutan~975!!!BO~Bolivia~591!!!BQ~Bonaire~599!!!BA~Bosnia and Herzegovina~387!!!BW~Botswana~267!!!BR~Brazil~55!!!IO~British Indian Ocean Territory~246!!!VG~British Virgin Islands~1!!!BN~Brunei~673!!!BG~Bulgaria~359!!!BF~Burkina Faso~226!!!BI~Burundi~257!!!CV~Cabo Verde~238!!!KH~Cambodia~855!!!CM~Cameroon~237!!!CA~Canada~1!!!KY~Cayman Islands~1!!!CF~Central African Republic~236!!!TD~Chad~235!!!CL~Chile~56!!!CN~China~86!!!CX~Christmas Island~61!!!CC~Cocos (Keeling) Islands~61!!!CO~Colombia~57!!!KM~Comoros~269!!!CG~Congo~242!!!CD~Congo (DRC)~243!!!CK~Cook Islands~682!!!CR~Costa Rica~506!!!CI~Côte d\u0027Ivoire~225!!!HR~Croatia~385!!!CU~Cuba~53!!!CW~Curaçao~599!!!CY~Cyprus~357!!!CZ~Czechia~420!!!DK~Denmark~45!!!DJ~Djibouti~253!!!DM~Dominica~1!!!DO~Dominican Republic~1!!!EC~Ecuador~593!!!EG~Egypt~20!!!SV~El Salvador~503!!!GQ~Equatorial Guinea~240!!!ER~Eritrea~291!!!EE~Estonia~372!!!ET~Ethiopia~251!!!FK~Falkland Islands~500!!!FO~Faroe Islands~298!!!FJ~Fiji~679!!!FI~Finland~358!!!FR~France~33!!!GF~French Guiana~594!!!PF~French Polynesia~689!!!GA~Gabon~241!!!GM~Gambia~220!!!GE~Georgia~995!!!DE~Germany~49!!!GH~Ghana~233!!!GI~Gibraltar~350!!!GR~Greece~30!!!GL~Greenland~299!!!GD~Grenada~1!!!GP~Guadeloupe~590!!!GU~Guam~1!!!GT~Guatemala~502!!!GG~Guernsey~44!!!GN~Guinea~224!!!GW~Guinea-Bissau~245!!!GY~Guyana~592!!!HT~Haiti~509!!!HN~Honduras~504!!!HK~Hong Kong SAR~852!!!HU~Hungary~36!!!IS~Iceland~354!!!IN~India~91!!!ID~Indonesia~62!!!IR~Iran~98!!!IQ~Iraq~964!!!IE~Ireland~353!!!IM~Isle of Man~44!!!IL~Israel~972!!!IT~Italy~39!!!JM~Jamaica~1!!!JP~Japan~81!!!JE~Jersey~44!!!JO~Jordan~962!!!KZ~Kazakhstan~7!!!KE~Kenya~254!!!KI~Kiribati~686!!!KR~Korea~82!!!KW~Kuwait~965!!!KG~Kyrgyzstan~996!!!LA~Laos~856!!!LV~Latvia~371!!!LB~Lebanon~961!!!LS~Lesotho~266!!!LR~Liberia~231!!!LY~Libya~218!!!LI~Liechtenstein~423!!!LT~Lithuania~370!!!LU~Luxembourg~352!!!MO~Macao SAR~853!!!MG~Madagascar~261!!!MW~Malawi~265!!!MY~Malaysia~60!!!MV~Maldives~960!!!ML~Mali~223!!!MT~Malta~356!!!MH~Marshall Islands~692!!!MQ~Martinique~596!!!MR~Mauritania~222!!!MU~Mauritius~230!!!YT~Mayotte~262!!!MX~Mexico~52!!!FM~Micronesia~691!!!MD~Moldova~373!!!MC~Monaco~377!!!MN~Mongolia~976!!!ME~Montenegro~382!!!MS~Montserrat~1!!!MA~Morocco~212!!!MZ~Mozambique~258!!!MM~Myanmar~95!!!NA~Namibia~264!!!NR~Nauru~674!!!NP~Nepal~977!!!NL~Netherlands~31!!!NC~New Caledonia~687!!!NZ~New Zealand~64!!!NI~Nicaragua~505!!!NE~Niger~227!!!NG~Nigeria~234!!!NU~Niue~683!!!NF~Norfolk Island~672!!!KP~North Korea~850!!!MK~North Macedonia~389!!!MP~Northern Mariana Islands~1!!!NO~Norway~47!!!OM~Oman~968!!!PK~Pakistan~92!!!PW~Palau~680!!!PS~Palestinian Authority~970!!!PA~Panama~507!!!PG~Papua New Guinea~675!!!PY~Paraguay~595!!!PE~Peru~51!!!PH~Philippines~63!!!PL~Poland~48!!!PT~Portugal~351!!!PR~Puerto Rico~1!!!QA~Qatar~974!!!RE~Réunion~262!!!RO~Romania~40!!!RU~Russia~7!!!RW~Rwanda~250!!!BL~Saint Barthélemy~590!!!KN~Saint Kitts and Nevis~1!!!LC~Saint Lucia~1!!!MF~Saint Martin~590!!!PM~Saint Pierre and Miquelon~508!!!VC~Saint Vincent and the Grenadines~1!!!WS~Samoa~685!!!SM~San Marino~378!!!ST~São Tomé and Príncipe~239!!!SA~Saudi Arabia~966!!!SN~Senegal~221!!!RS~Serbia~381!!!SC~Seychelles~248!!!SL~Sierra Leone~232!!!SG~Singapore~65!!!SX~Sint Maarten~1!!!SK~Slovakia~421!!!SI~Slovenia~386!!!SB~Solomon Islands~677!!!SO~Somalia~252!!!ZA~South Africa~27!!!SS~South Sudan~211!!!ES~Spain~34!!!LK~Sri Lanka~94!!!SH~St Helena, Ascension, and Tristan da Cunha~290!!!SD~Sudan~249!!!SR~Suriname~597!!!SJ~Svalbard~47!!!SZ~Swaziland~268!!!SE~Sweden~46!!!CH~Switzerland~41!!!SY~Syria~963!!!TW~Taiwan~886!!!TJ~Tajikistan~992!!!TZ~Tanzania~255!!!TH~Thailand~66!!!TL~Timor-Leste~670!!!TG~Togo~228!!!TK~Tokelau~690!!!TO~Tonga~676!!!TT~Trinidad and Tobago~1!!!TA~Tristan da Cunha~290!!!TN~Tunisia~216!!!TR~Turkey~90!!!TM~Turkmenistan~993!!!TC~Turks and Caicos Islands~1!!!TV~Tuvalu~688!!!VI~U.S. Virgin Islands~1!!!UG~Uganda~256!!!UA~Ukraine~380!!!AE~United Arab Emirates~971!!!GB~United Kingdom~44!!!US~United States~1!!!UY~Uruguay~598!!!UZ~Uzbekistan~998!!!VU~Vanuatu~678!!!VA~Vatican City~39!!!VE~Venezuela~58!!!VN~Vietnam~84!!!WF~Wallis and Futuna~681!!!YE~Yemen~967!!!ZM~Zambia~260!!!ZW~Zimbabwe~263","fUseInlinePhoneNumber":true,"fDetectBrowserCapabilities":true,"fUseMinHeight":true,"fShouldSupportTargetCredentialForRecovery":true,"fAvoidNewOtcGenerationWhenAlreadySent":true,"fEnableProofTypeValidation":true,"fUseCertificateInterstitialView":true,"fIsPasskeySupportEnabled":true,"arrPromotedFedCredTypes":[],"fShowUserAlreadyExistErrorHandling":true,"fBlockOnAppleEmailClaimError":true,"fIsVerifiableCredentialsSupportEnabled":true,"iVerifiableCredentialPresentationPollingIntervalSeconds":0.5,"iVerifiableCredentialPresentationPollingTimeoutSeconds":300,"fIsQrPinEnabled":true,"fPasskeyAssertionRedirect":true,"fShowProgressForPasskeyAutofill":true,"fFixUrlExternalIdpFederation":true,"fEnableBackButtonBugFix":true,"fEnableTotalLossRecovery":true,"fUpdatePromotedCredTypesOrder":true,"fUseNewPromotedCredsComponent":true,"fEnableGctCredentialTelemetry":true,"urlSessionState":"https://login.microsoftonline.com/common/DeviceCodeStatus","urlResetPassword":"https://passwordreset.microsoftonline.com/?ru=https%3a%2f%2flogin.microsoftonline.com%2f6faddc4a-b692-41cd-aa16-efeaa97fe27c%2freprocess%3fctx%3drQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0\u0026mkt=en-US\u0026hosted=0\u0026device_platform=Windows+10","urlMsaResetPassword":"https://account.live.com/password/reset?wreply=https%3a%2f%2flogin.microsoftonline.com%2f6faddc4a-b692-41cd-aa16-efeaa97fe27c%2freprocess%3fctx%3drQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0\u0026mkt=en-US","fFixUrlResetPassword":true,"urlGetCredentialType":"https://login.microsoftonline.com/common/GetCredentialType?mkt=en-US","urlGetRecoveryCredentialType":"https://login.microsoftonline.com/common/getrecoverycredentialtype?mkt=en-US","urlGetOneTimeCode":"https://login.microsoftonline.com/common/GetOneTimeCode","urlLogout":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/uxlogout","urlForget":"https://login.microsoftonline.com/forgetuser","urlDisambigRename":"https://go.microsoft.com/fwlink/p/?LinkID=733247","urlGoToAADError":"https://login.live.com/oauth20_authorize.srf?scope=openid+profile+email+offline_access\u0026response_type=code\u0026client_id=51483342-085c-4d86-bf88-cf50c7252078\u0026response_mode=form_post\u0026redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa\u0026state=rQQIARAAnVNtiNv2GbfixLnzLumdB2MwNsI1lC5Xx3qzLR8LTLL0t08-yZasv2S7tFdZki1br2fJtuySfggb5MPYboyNLQn90MEYyWDN6EbIPmSwFUYg7UEDhbAPXdmgy1b2xkag7AVvX_ax7Pnw8Lz--D0P_C6ksYvY7nn0v0bkVz6PDgZY3rBW0f_YJJfdfO0Lv__a0WbqpVuXvv8D7PNXXryGrB-4o5l10Qi8mwhlx3EY7RYKxGjkD4LYMuy8t7gY2frECoORH6_GCgeDYOJFBdMa6FM3vqhHYXIHQY4R5AMEuXnisFomKizDlGiSqaA0h1dQlCA4lmYIlgUVmqmS1TJbZIsltkiQFIbmSa5UZkARr2AYjlcpBoAioEAVxyo0ywCSKZVQQFDFMk6zHIZVaJSiKa5aJdhymWLQMvnoxFNNehrb-MoFk9HS-suJ9RXHgzCI4mvpN042WXTOj4VFCwJGqcKF7Km-BAEjuRwhjIcLqMmKBuPDngOUtms3eIWvdcd2qI3tjtjpBUYtKZpLF9UJnjW4om9CuBQgwA0NK3ah5ApOL2qCMOEVvmqOVvgyDp1gVcdlwlUsH7QUrhcoRBfXOLPRVMyZ6BU5zWVmfZ9nBNxI5I4Lug5QRRy0-oqAQYVviBosynWbhZg677owkdwuLrbhQhq7qM65scUynLLsoRJu1w2OxDRXQg1cxKCrajIaFfsEL4mejPVxCbO4MBJxYWniSbcPwoVMqHuqx9cNFgQ96Ca6D5ZddI9c3W7WQK3HmaLa6TFdLxwpQOyJntg0XXuqKL25jrpzwVE9E-Nji-vJoqpOjbHoiUtGlzwwFwngqn4omyiVCE58CMfqoskynu4lDNTChgmYePUrqEXLtiIzsCazKgCOqYgKrIkz1XUZqSO3FS4Gmsc7aodvmwSYq4o6NhVVF1Vp2XUq7RVXAZpNlRMnVgdoxgIuJF9wBadLWJ7Lm4B2BYcvqZocmI5BNLUKZ2hzUlBlKOJibKrupNkRiiKUlR4HeIgm4x7roLwicjfTH0tUP0qfLw100zRIPd8vVfA8iRlmXtexUt4aWLpeKQ8svGzcT2eC0PJH5vFJ5PHJDTS9u7aW3Ux9OnUu9eQk8tqpXHbzq_fsC69Of_jF649v3btec1P3TxVq7VqvMbTiCq13xNZiVFMds9soV1s7BWpcnfiNwUQtltBIKO1dwnexowxylMkcZfijzCfvZtbX0pup7XS1hf0pg1w9nbq7_n_L-9tZ5PgTyOsbyKMNLLtuBP2J7psjM3cew_omhVJEnipbaJ7E-sV8v1-m8mjfIAmD0imL0h9tkNmM4eojL8pdeHl7ZB7EgWP527svbydedGAYq2imu1Mr2t59frvawrZfuHz58pUzHwv9Z2dST87-4eE7D26_--Yf64-fes7x9rkwwgw5EQZMiZwyDugv51alTXlikCzDZTSFMSlEyWJ46fXN1HubqZtbvz2RDbNkKpVCT_007333J6kXvnTnxtsfbnzr55-5gvzz_c9-4--_-t65a8T9h1swe_1sXXrlrXr7o3u3HhzeyP1n66VnfvHBnx9Y3_nXhw8_Mm6_ePxo469PP_OPG889-R348vb7Z9589W9l8_anhq2vP7v2m5h6-o1zyLNI7mw2rbvD3GmuytbzXHuVW76RO03jxVKtKuSOkWxaD2e5XyI0TdNVqNqGI0a6pk7N2pCmaQZIaLQUVk1aK-9r-DgeMqa9PzKWO6jgRkJ_OKzvkDauVOKFt8cHy0Usyap02GcdWx5ExT1YmBYOKSzxa7SXNMfJUtN6hR0C7uDNpBOzOtsSxvwMN_Zb41AO4IgcEsCfQaK3z2k9rCo36LFjssNxvKLA2NNCo6OyfN1bUn5YmwbM2J6UawXRq7NNgvPhpbtbuezm7Oqv1-b6K_U7P377mxuf637lva3Uk62j9NVc6t81\u0026estsfed=1\u0026uaid=8feb3ca210906000ab3da8ac3129825e\u0026cobrandid=11bd8083-87e0-41b5-bb78-0bc43c8a8e8a\u0026fci=00000003-0000-0ff1-ce00-000000000000\u0026wsucxt=1","urlDeviceFingerprinting":"","urlPIAEndAuth":"https://login.microsoftonline.com/common/PIA/EndAuth","urlStartTlr":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/tlr/start","fKMSIEnabled":false,"iLoginMode":1,"fAllowPhoneSignIn":true,"fAllowPhoneInput":true,"fAllowSkypeNameLogin":true,"iMaxPollErrors":5,"iPollingTimeout":300,"srsSuccess":true,"fShowSwitchUser":true,"arrValErrs":["50058"],"sErrorCode":"50058","sWAMExtension":"ppnbnpeolgkicgegkbkbjmhlideopiji","sWAMChannel":"53ee284d-920a-4b59-9d30-a60315b26836","sErrTxt":"","sResetPasswordPrefillParam":"username","onPremPasswordValidationConfig":{"isUserRealmPrecheckEnabled":true},"fSwitchDisambig":true,"oCancelPostParams":{"error":"access_denied","error_subcode":"cancel","state":"OD0wJjMyPUFBTCUyRmVnQUFBQlE3MjgyUWRTWUtqZkFTSlhKJTJGYjhpWjhXNXZocGx5dzl0a3JDcE5ndUUzMUF2cW15YUQlMkZsOFpxJTJCdiUyRmR2UkolMkZ2R3lTenFPTEZoT3Y2WEdKOTdvNm5EWlBvbnJBM2cxRXlFYkFVN2FPbTM1UTJKNWU5RHhDU1VwYlUxQlY2NSUyQjl0aElteDBETzZ0Q2hHcE41WlQ0c2N1UlVWR0s5b3JQNmR1b2Q1eEpsN2Mzd2xYbFpyR3VIVmJHcDFoZUlxanFzY0I4JTJGdGFGZEdNVXZBYmpiTFNZNmNOdlhuTTZwa0lwMkVmd1JteEZRNVVucjNmNzBaQmFwN3FlVnpRd08xMktqUjVyODBmamxBUWpKdFBtJTJCUWszSTRBUGRDVFFkdTNTUGNvVllBQXRSTEtFWmJkVXJSd3FwVTVjdTVaNVQzYk9SJTJGMUdOVENreXFWcyUyQnMlMkY3emlJdFAlMkJ6VWRodkc3OW9EcWw4MVRUN2NtdVlrOXM5NURTZEFJU0xjZDk0JTNE","canary":"GSGZKget9AaXNPyiGVkdYK7CP+/8jCrnKfrV560sM6I=2:1:CANARY:kmLEps1cRxMfB64uBkFbzwe9S8mNoxzpzsuUt4Msxyg="},"iRemoteNgcPollingType":2,"fUseNewNoPasswordTypes":true,"urlAadSignup":"https://signup.microsoft.com/signup?sku=teams_commercial_trial\u0026origin=ests\u0026culture=en-US","urlTenantedEndpointFormat":"https://login.microsoftonline.com/{0}/oauth2/authorize?client_id=00000003-0000-0ff1-ce00-000000000000\u0026response_mode=form_post\u0026ear_jwe_crypto=eyJhbGciOiJFQ0RILUVTIiwiZW5jIjoiQTI1NkdDTSIsImFwdiI6IkFBQUFDVVZoY2tOc2FXVnVkR2dBQUFCRlEwc3pNQUFBQUFXN0xXMmp0Z0JkaExpY3orME1sc01iZ2dIKzRoMlQ5dHltSUpvenl0UVJWUXFiRGtoUmZzNUlVL3UvcTgxeG5HQW14T2p4eldXWi8rM1UrMk94WHREYURQTWpKdjJjTFBqcFJvVWk0ZzNGbnZVM1pMRVdaMUNSS0Fqa2REZ2p0QUFBQUJodS9LWFZESkhtejhucEd1b0JqaHI3Ry9ObUhETzNFblU9In0%3d\u0026ear_jwk=eyJhbGciOiJFQ0RILUVTIiwiY3J2IjoiUC0zODQiLCJ4IjoiQUFBQU1BVzdMVzJqdGdCZGhMaWN6KzBNbHNNYmdnSCs0aDJUOXR5bUlKb3p5dFFSVlFxYkRraFJmczVJVS91L3E4MXhuQT09IiwieSI6IkFBQUFNR0FteE9qeHpXV1ovKzNVKzJPeFh0RGFEUE1qSnYyY0xQanBSb1VpNGczRm52VTNaTEVXWjFDUktBamtkRGdqdEE9PSIsImt0eSI6IkVDIn0%3d\u0026spa_client_id=08e18876-6177-487e-b8b5-cf950c1e598c\u0026client_info=1\u0026response_type=code+id_token+spa_rt\u0026resource=00000003-0000-0ff1-ce00-000000000000\u0026scope=openid\u0026nonce=C739DBB6A4B90AE290033EDAB3DDF9ABC4C7D5D56D534810-4E67BF5291122C8BFF5F8FC219ADBF4B660F38572ADE119A08A8ECC3D778B074\u0026redirect_uri=https%3a%2f%2f3iinfotech-my.sharepoint.com%2f_forms%2fdefault.aspx\u0026state=OD0wJjMyPUFBTCUyRmVnQUFBQlE3MjgyUWRTWUtqZkFTSlhKJTJGYjhpWjhXNXZocGx5dzl0a3JDcE5ndUUzMUF2cW15YUQlMkZsOFpxJTJCdiUyRmR2UkolMkZ2R3lTenFPTEZoT3Y2WEdKOTdvNm5EWlBvbnJBM2cxRXlFYkFVN2FPbTM1UTJKNWU5RHhDU1VwYlUxQlY2NSUyQjl0aElteDBETzZ0Q2hHcE41WlQ0c2N1UlVWR0s5b3JQNmR1b2Q1eEpsN2Mzd2xYbFpyR3VIVmJHcDFoZUlxanFzY0I4JTJGdGFGZEdNVXZBYmpiTFNZNmNOdlhuTTZwa0lwMkVmd1JteEZRNVVucjNmNzBaQmFwN3FlVnpRd08xMktqUjVyODBmamxBUWpKdFBtJTJCUWszSTRBUGRDVFFkdTNTUGNvVllBQXRSTEtFWmJkVXJSd3FwVTVjdTVaNVQzYk9SJTJGMUdOVENreXFWcyUyQnMlMkY3emlJdFAlMkJ6VWRodkc3OW9EcWw4MVRUN2NtdVlrOXM5NURTZEFJU0xjZDk0JTNE\u0026claims=%7b%22id_token%22%3a%7b%22xms_cc%22%3a%7b%22values%22%3a%5b%22CP1%22%5d%7d%7d%7d\u0026wsucxt=1\u0026cobrandid=11bd8083-87e0-41b5-bb78-0bc43c8a8e8a\u0026client-request-id=8feb3ca2-1090-6000-ab3d-a8ac3129825e\u0026allowbacktocommon=True","sCloudInstanceName":"microsoftonline.com","fShowSignInOptionsAsButton":true,"fUseNewPhoneSignInError":true,"fIsUpdatedAutocompleteEnabled":true,"fActivateFocusOnApprovalNumberRemoteNGC":true,"fIsPasskey":true,"fEnableDFPIntegration":true,"fEnableCenterFocusedApprovalNumber":true,"fShowPassKeyErrorUCP":true,"fFixPhoneDisambigSignupRedirect":true,"fEnableQrCodeA11YFixes":true,"fEnablePasskeyAwpError":true,"fEnableAuthenticatorTimeoutFix":true,"fEnablePasskeyAutofillUI":true,"fIsAuthAppRestoreTextEnabled":true,"sCrossDomainCanary":"PBgABDgEAAAA9VeaV3ywaSLp1O3c4_Et5RXZvU3RzQXJ0aWZhY3RzCAAAAAAAuoFqQigkejGgJpRQ_Kk7UoE0dO0eAunMH0RFGCooKx76af_npwCOVNKe8xVj089VoD8j0fkScjBhKYmz6Ti4VIPD9Qrw4cFqVgV-dc1Ex-U2S6T3qA86xiiI1x_NHzI8J_SEiz4Hs-N1h2tG_Av-uZGaKmKdtpYr5smJ6OcHq6S_qCNIneUulJ3uMAQcFV2c3jEhu5PVJ-aZJuoVE3dwCMabEXFjMCoWBYfai2uYIJlNZTFIfpHOGdIpMqIUb0Pguvo4tiVABAZfNA96fROr1FgZH4BVnIQ4s7iQ-68sRvWqgiQEPy2is0Jj91r8bXj8UWHDvaOdKuM-wgO4X4lFt9PNRHGjT-R9bckJ51PVSJKqS8Z0zEfIKabfC2m_wo5kTCPl7TPkehHz145vpTkzntkvc9dlhSWz1EfTxWk_T43s9hfAhP5hMS2YyeAR6s1Uuubj57bYQft9omNqHZx3UEngbzBnl5MQbA_jDrBiXuxTbPoF0btBDB8Gt6EbrjYHKvgTpMpw1ih5S_Q7qt6otbkEwILRFjczKJjFAA6Ok30QOb09TIoFXScfJ_vy3HHE8WfJs56pB822YV-qr0UOIZsesD5TIvk3E1HUM6zXlHQH39Z6hae4Q2m_x4ETZ6Xpu4__j-JbV9ultgtV1gG0GwoWPrF7_Gqnhx_z0oEHY6fP3SFcGQEQg2JawobIdoTHhMzwRIumJa7tNonAxK2wxK8BAwXnyvj4zonaAv3F3S1uuSx_Hch6H75OJVQK3MUmIAA","arrExcludedDisplayNames":["unknown"],"fFixShowRevealPassword":true,"fRemoveTLRFragment":true,"fEnableCredentialPickerBranding":true,"fWaitForCustomStringsBeforeRender":true,"iMaxStackForKnockoutAsyncComponents":10000,"fShowButtons":true,"urlCdn":"https://aadcdn.msauth.net/shared/1.0/","urlDefaultFavicon":"https://aadcdn.msauth.net/shared/1.0/content/images/favicon_a_eupayfgghqiai7k9sol6lg2.ico","urlFooterTOU":"https://www.microsoft.com/en-US/servicesagreement/","urlFooterPrivacy":"https://privacy.microsoft.com/en-US/privacystatement","urlPost":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/login","urlPostAad":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/login","urlPostMsa":"https://login.live.com/ppsecure/partnerpost.srf?scope=openid+profile+email+offline_access\u0026response_type=code\u0026client_id=51483342-085c-4d86-bf88-cf50c7252078\u0026response_mode=form_post\u0026redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa\u0026state=rQQIARAAnVNtiNv2GbfixLnzLumdB2MwNsI1lC5Xx3qzLR8LTLL0t08-yZasv2S7tFdZki1br2fJtuySfggb5MPYboyNLQn90MEYyWDN6EbIPmSwFUYg7UEDhbAPXdmgy1b2xkag7AVvX_ax7Pnw8Lz--D0P_C6ksYvY7nn0v0bkVz6PDgZY3rBW0f_YJJfdfO0Lv__a0WbqpVuXvv8D7PNXXryGrB-4o5l10Qi8mwhlx3EY7RYKxGjkD4LYMuy8t7gY2frECoORH6_GCgeDYOJFBdMa6FM3vqhHYXIHQY4R5AMEuXnisFomKizDlGiSqaA0h1dQlCA4lmYIlgUVmqmS1TJbZIsltkiQFIbmSa5UZkARr2AYjlcpBoAioEAVxyo0ywCSKZVQQFDFMk6zHIZVaJSiKa5aJdhymWLQMvnoxFNNehrb-MoFk9HS-suJ9RXHgzCI4mvpN042WXTOj4VFCwJGqcKF7Km-BAEjuRwhjIcLqMmKBuPDngOUtms3eIWvdcd2qI3tjtjpBUYtKZpLF9UJnjW4om9CuBQgwA0NK3ah5ApOL2qCMOEVvmqOVvgyDp1gVcdlwlUsH7QUrhcoRBfXOLPRVMyZ6BU5zWVmfZ9nBNxI5I4Lug5QRRy0-oqAQYVviBosynWbhZg677owkdwuLrbhQhq7qM65scUynLLsoRJu1w2OxDRXQg1cxKCrajIaFfsEL4mejPVxCbO4MBJxYWniSbcPwoVMqHuqx9cNFgQ96Ca6D5ZddI9c3W7WQK3HmaLa6TFdLxwpQOyJntg0XXuqKL25jrpzwVE9E-Nji-vJoqpOjbHoiUtGlzwwFwngqn4omyiVCE58CMfqoskynu4lDNTChgmYePUrqEXLtiIzsCazKgCOqYgKrIkz1XUZqSO3FS4Gmsc7aodvmwSYq4o6NhVVF1Vp2XUq7RVXAZpNlRMnVgdoxgIuJF9wBadLWJ7Lm4B2BYcvqZocmI5BNLUKZ2hzUlBlKOJibKrupNkRiiKUlR4HeIgm4x7roLwicjfTH0tUP0qfLw100zRIPd8vVfA8iRlmXtexUt4aWLpeKQ8svGzcT2eC0PJH5vFJ5PHJDTS9u7aW3Ux9OnUu9eQk8tqpXHbzq_fsC69Of_jF649v3btec1P3TxVq7VqvMbTiCq13xNZiVFMds9soV1s7BWpcnfiNwUQtltBIKO1dwnexowxylMkcZfijzCfvZtbX0pup7XS1hf0pg1w9nbq7_n_L-9tZ5PgTyOsbyKMNLLtuBP2J7psjM3cew_omhVJEnipbaJ7E-sV8v1-m8mjfIAmD0imL0h9tkNmM4eojL8pdeHl7ZB7EgWP527svbydedGAYq2imu1Mr2t59frvawrZfuHz58pUzHwv9Z2dST87-4eE7D26_--Yf64-fes7x9rkwwgw5EQZMiZwyDugv51alTXlikCzDZTSFMSlEyWJ46fXN1HubqZtbvz2RDbNkKpVCT_007333J6kXvnTnxtsfbnzr55-5gvzz_c9-4--_-t65a8T9h1swe_1sXXrlrXr7o3u3HhzeyP1n66VnfvHBnx9Y3_nXhw8_Mm6_ePxo469PP_OPG889-R348vb7Z9589W9l8_anhq2vP7v2m5h6-o1zyLNI7mw2rbvD3GmuytbzXHuVW76RO03jxVKtKuSOkWxaD2e5XyI0TdNVqNqGI0a6pk7N2pCmaQZIaLQUVk1aK-9r-DgeMqa9PzKWO6jgRkJ_OKzvkDauVOKFt8cHy0Usyap02GcdWx5ExT1YmBYOKSzxa7SXNMfJUtN6hR0C7uDNpBOzOtsSxvwMN_Zb41AO4IgcEsCfQaK3z2k9rCo36LFjssNxvKLA2NNCo6OyfN1bUn5YmwbM2J6UawXRq7NNgvPhpbtbuezm7Oqv1-b6K_U7P377mxuf637lva3Uk62j9NVc6t81\u0026flow=fido\u0026estsfed=1\u0026uaid=8feb3ca210906000ab3da8ac3129825e\u0026cobrandid=11bd8083-87e0-41b5-bb78-0bc43c8a8e8a\u0026fci=00000003-0000-0ff1-ce00-000000000000\u0026wsucxt=1","urlRefresh":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/reprocess?ctx=rQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0","urlCancel":"https://3iinfotech-my.sharepoint.com/_forms/default.aspx","urlResume":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/resume?ctx=rQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0","iPawnIcon":0,"iPollingInterval":1,"sPOST_Username":"","fEnableNumberMatching":true,"stsErrorCode":"50058","sFT":"BgABIQEAAAA9VeaV3ywaSLp1O3c4_Et5RXZvU3RzQXJ0aWZhY3RzAQAAAAAAYB7e0sdA349vTi_tkJriXO7q76dRZ4GUcjBiCNp8RjptUje5fdmW7I39VF9Qs2mY2APsEkNG17KrfB0RbUs8p7fZgQ7L87XXxMve_0Z4MkToI9JKvdu3pyjhnaoFo59WIIgVhgMdtLCi8O9SmOgkgCLsz7IBhz9bBncbgfwFIbAIboc4vBd7aSBX9P0UlvjH1IS69ef34b9FpdmLyMzdPNMWmmYKXQcJH3rQrd4nPWYRPDF1CIZvzUlhTWPN2kZyIxtPNS79ycf4e50gDPwYib71iAVunjPL8w-hsLyCcByJwmWO72MB1bxu12k0dcSwaVWAqB9F9VWgLEfSB0-nbRlb_tBqIK2gYpRxdkHhEL2LOw8vu1KARCUYThp0OWQuzCS5q29uRXcBv_hYVIJBnl6TlLSUTaMdt2Yu8DSrGT01hJxNmghrNJT7OiAz2quDuJukK-CQCVWORPKd8G6AOqMBhtlf1HE8QoZUcTT3kC2rtca3FVrDaNKRjyVjBvBMaH3xuM4925xahLyOZPBrIe5kLOiSvlhecNAAq5b47ypzUGRZHG-5j5JLYFtrZkm19AuBW7CPM041wwuLsy8YArojpKtyskFOPnFXxrmTqb3wInSmcpzzK3kPcVJB3eGlYoM-QzYdodhxT3RdjLt-YAtGXlnsAi8mD1l--O9Hw56WFlOqB0v7pg0qSLsIkWp-r8V6RMN3HUgy74TtS2Jv-rssGGaYieqbtS07bAjhxUOoFy8rVRTuS38mbyvM13U1rXIDtDeoMjVPKehEeensSIzrYNIhfse2C_jNPlpbeJaNRvDcZqu9nGfl0vZtZMBuy-W11_frKnedXayEhxfwtiY0u7QHnxzQEEg_svBfTVAwOzvYlZIWQm8B-sZ0_7Gzrq_Z8tzpM0phoJdmUkurnO26DjoIIeoe4Kjfp_Ls1Pgkslr2Yl83btiPsxeDlcFdkKF2d4UhAPAhmzdWWhARLAAKfCJ4d7vWVSyF-gu_Hn3uv-Aoy_PT1dqPvRTcmCGpPhkSX-HjOZhxkxFW45xATtRnq71Wnbj5KGGbq0sigIZmTZu3ZphFvm27AOWKHOyJLkUYi1ikBUTQwLWr_dw8ESAA","sFTName":"flowToken","sFTCookieName":"ESTSWCTXFLOWTOKEN","sSessionIdentifierName":"code","sCtx":"rQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0","iProductIcon":-1,"fEnableOneDSClientTelemetry":true,"fEnableWebVitalsV2":true,"staticTenantBranding":null,"oAppCobranding":{},"iBackgroundImage":4,"arrSessions":[],"fApplicationInsightsEnabled":false,"iApplicationInsightsEnabledPercentage":0,"urlSetDebugMode":"https://login.microsoftonline.com/common/debugmode","fEnableCssAnimation":true,"fAllowGrayOutLightBox":true,"fUseMsaSessionState":true,"fIsRemoteNGCSupported":true,"desktopSsoConfig":{"isEdgeAnaheimAllowed":true,"iwaEndpointUrlFormat":"https://autologon.microsoftazuread-sso.com/{0}/winauth/sso?client-request-id=8feb3ca2-1090-6000-ab3d-a8ac3129825e","iwaSsoProbeUrlFormat":"https://autologon.microsoftazuread-sso.com/{0}/winauth/ssoprobe?client-request-id=8feb3ca2-1090-6000-ab3d-a8ac3129825e","iwaIFrameUrlFormat":"https://autologon.microsoftazuread-sso.com/{0}/winauth/iframe?client-request-id=8feb3ca2-1090-6000-ab3d-a8ac3129825e\u0026isAdalRequest=False","iwaRequestTimeoutInMs":10000,"startDesktopSsoOnPageLoad":false,"progressAnimationTimeout":10000,"isEdgeAllowed":false,"minDssoEdgeVersion":"17","isSafariAllowed":true,"redirectUri":"https://3iinfotech-my.sharepoint.com/_forms/default.aspx","redirectDssoErrorPostParams":{"error":"interaction_required","error_description":"Seamless single sign on failed for the user. This can happen if the user is unable to access on premises AD or intranet zone is not configured correctly Trace ID: 2a68bf8e-759e-40af-9bea-abbf9b476c00 Correlation ID: 8feb3ca2-1090-6000-ab3d-a8ac3129825e Timestamp: 2026-09-20 02:01:35Z","state":"OD0wJjMyPUFBTCUyRmVnQUFBQlE3MjgyUWRTWUtqZkFTSlhKJTJGYjhpWjhXNXZocGx5dzl0a3JDcE5ndUUzMUF2cW15YUQlMkZsOFpxJTJCdiUyRmR2UkolMkZ2R3lTenFPTEZoT3Y2WEdKOTdvNm5EWlBvbnJBM2cxRXlFYkFVN2FPbTM1UTJKNWU5RHhDU1VwYlUxQlY2NSUyQjl0aElteDBETzZ0Q2hHcE41WlQ0c2N1UlVWR0s5b3JQNmR1b2Q1eEpsN2Mzd2xYbFpyR3VIVmJHcDFoZUlxanFzY0I4JTJGdGFGZEdNVXZBYmpiTFNZNmNOdlhuTTZwa0lwMkVmd1JteEZRNVVucjNmNzBaQmFwN3FlVnpRd08xMktqUjVyODBmamxBUWpKdFBtJTJCUWszSTRBUGRDVFFkdTNTUGNvVllBQXRSTEtFWmJkVXJSd3FwVTVjdTVaNVQzYk9SJTJGMUdOVENreXFWcyUyQnMlMkY3emlJdFAlMkJ6VWRodkc3OW9EcWw4MVRUN2NtdVlrOXM5NURTZEFJU0xjZDk0JTNE","canary":"GSGZKget9AaXNPyiGVkdYK7CP+/8jCrnKfrV560sM6I=2:1:CANARY:kmLEps1cRxMfB64uBkFbzwe9S8mNoxzpzsuUt4Msxyg="},"isIEAllowedForSsoProbe":true,"edgeRedirectUri":"https://autologon.microsoftazuread-sso.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/winauth/sso/edgeredirect?client-request-id=8feb3ca2-1090-6000-ab3d-a8ac3129825e\u0026origin=login.microsoftonline.com\u0026is_redirected=1","isFlowTokenPassedInEdge":true},"urlLogin":"https://login.microsoftonline.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/reprocess?ctx=rQQIARAAnVNbiBvnFdZYtrxW186uCqVQWszGhMQbWXOTNFpq6IxmfmlHOyPNaP4ZSSFxRjOjy9xXM1qNJjgPpgU_lHZLaWljk4cUSrELiUtajPvgQhsoBicLMQRMH9LQQuo29EaLIfSC2pc-hp6Hw3fO4Xx858B3PotdwHbOof8NorjKRXQ0woqGtUL_E7NCfuO1L_7-64cbmRdvXvzBD7FnrrxwA6EmcRxGO6USMZ36oyC2jEnRW16IJvrMCoOpH18wAq90aRTMvKhkWiN97sYX9ChMbiPIEYJ8iCA3ju3Xq0SNZZgKTTI1lObwGooSBMfSDMGyoEYzdbJeZctsucKWCZLC0CLJVaoMKOM1DMPxOsUAUAYUqONYjWYZQDKVCgoIqlzFaZbDsBqNUjTF1esEW61SDFolHx57ok3P4wm-SsFsmlp_OXZqpfFSGETxK9k3j7dZdMHbwrIDAaPU4VL2VF-CgJFcjhDs8RJqsqLBeH_gAKXrTlq8wjf69iTU7ElP7A0Co5GUzdRFdYJnDa7smxCmAgS4oWHlPpRcwRlEbRAmvMLXzemKX8ahE6z6uEy4iuWDjsINAoXo4xpnttqKeSB6ZU5zmYOhzzMCbiRyzwV9B6giDjpDRcCgwrdEDZbl5oSFmLrouzCR3D4uduFSsl1U59zYYhlOSQeohE-aBkdimiuhBi5i0FU1GY3KQ4KXRE_GhriEWVwYibiQmnjSH4JwKRPqrurxTYMFwQC6ie6DtI_ukqvbzQZoDDhTVHsDpu-FUwWIA9ET26Y7mSvKYKGj7kJwVM_E-NjiBrKoqnPDFj0xZXTJAwuRAK7qh7KJUongxPvQVpdtlvF0L2GgFrZMwMSrX0EtSruKzMCGzKoAOKYiKrAhHqiuy0g9uatwMdA83lF7fNckwEJVVNtUVF1UpbTv1LorrQI02yonzqwe0IwlXEq-4ApOn7A8lzcB7QoOX1E1OTAdg2hrNc7QFqSgylDExdhU3Vm7J5RFKCsDDvAQTewB66C8InI3sp_ISD_KnquMdNM0SL04rNTwIokZZlHXsUrRGlm6XquOLLxq3MvmgtDyp-bRceTR8XU0u7O2lt_IfDZzNvP4OPLaiUJ-42t3J-dfnb_-pWuPbt691nAz906UGt3GoDW24hqt98TOctpQHbPfqtY72yXKrs_81mimlitoJFR2L-I72GEOOczlDnP8Ye7Td3Kn1rIbma1svYP9KYdcPZm5c-r_tvd38sjRp5CH61j-lBEMZ7pvTs3COQwbmhRKEUWqaqFFEhuWi8NhlSqiQ4MkDEqnLEp_uE7mc4arT72ocP6lral5KQ4cy9_aeWkr8aJLhrFCB7o7t6Ktnee26h1s6_nLly9fOf2J2H92OvP4zB8evHv_1ntv_bH56IlnHW-PCyPMkBNhxFTIOeOAYbqwal3KE4MkDdNoDmNSiJLl-OIbG5n3NzI3Nn97LB_myUwmg574adH73k8yz3_59vV3Plr_9s8_dwX55wef_-bff_X9s68Q9x5swvy1M03p5beb3Y_v3ry_f73wn60Xn_rFh3--b333Xx89-Ni49cLRw_W_PvnUP64_-_h34CtbH5x-69W_Vc1bnxl3vvH02m9i6sk3zyJPI4Uz-azujgsnuTrbLHLdVW35RuEkjZcrjbpQOELyWT08KPwSoWmarkN1YjhipGvq3GyMaZpmgIRGqbAa0lp1T8PteMyYk72pkW6jghsJw_G4uU1OcKUWL71dPkiXsSSr0v6QdSbyKCrvwtK8tE9hid-gvaRtJ6mmDUrbBNzG20kvZnW2I9j8AW7sdexQDuCUHBPAP4DEYI_TBlhdbtG2Y7JjO15JYCbzUqunsnzTSyk_bMwDxp7Mqo2S6DXZNsH58OKdzUJ-4-Dqr9cW-svN2z9-51vrX-h_9f3NzOPNw-zVQubf0","urlDssoStatus":"https://login.microsoftonline.com/common/instrumentation/dssostatus","iSessionPullType":2,"fUseSameSite":true,"iAllowedIdentities":2,"uiflavor":1001,"urlFidoHelp":"https://go.microsoft.com/fwlink/?linkid=2013738","urlFidoLogin":"https://login.microsoft.com/6faddc4a-b692-41cd-aa16-efeaa97fe27c/fido/get?uiflavor=Web","fIsFidoSupported":true,"fHidePrivateBrowsingDisclaimer":true,"fLoadStringCustomizationPromises":true,"fUseAlternateTextForSwitchToCredPickerLink":true,"fOfflineAccountVisible":false,"fEnableUserStateFix":true,"fAccessPassSupported":true,"fShowAccessPassPeek":true,"fUpdateSessionPollingLogic":true,"fEnableShowPickerCredObservable":true,"fFetchSessionsSkipDsso":true,"fIsCiamUserFlowUxNewLogicEnabled":true,"fUseNonMicrosoftDefaultBrandingForCiam":true,"sCompanyDisplayName":"3i-infotech.com","fRemoveCustomCss":true,"fFixUICrashForApiRequestHandler":true,"fShowUpdatedKoreanPrivacyFooter":true,"fUsePostCssHotfix":true,"fFixUserFlowBranding":true,"fIsQrCodePinSupported":true,"fEnablePasskeyNullFix":true,"fUseNativeBridgeEdgeApi":true,"fEnableWebNativeBridgeInterstitialUx":true,"fEnableThisAppOnlyUxSupport":true,"fEnableWindowParentingFix":true,"fEnableNativeBridgeErrors":true,"fEnableNativeBridgeErrorUpn":true,"fEnableDomApiSuccessUpnFix":true,"urlAcmaServerPath":"https://login.microsoftonline.com","sTenantId":"6faddc4a-b692-41cd-aa16-efeaa97fe27c","sMkt":"en-US","fIsDesktop":true,"fLogDisallowedCssProperties":true,"fDisallowExternalFonts":true,"fDisallowCssPositioning":true,"sFidoChallenge":"O.eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQ1aDQwcTdHMHg0OXFuNDFsTTkta0tqcEQ5OCJ9.eyJhdWQiOiJ1cm46bWljcm9zb2Z0OmZpZG86Y2hhbGxlbmdlIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi5taWNyb3NvZnQuY29tIiwiaWF0IjoxNzg5ODY5Njk1LCJuYmYiOjE3ODk4Njk2OTUsImV4cCI6MTc4OTg2OTk5NSwianRpIjoianI5b0twNTFyMENiNnF1X20wZHNBQSIsInNpZCI6Im5GdlNrdmpHWjAwRXV3c3M5QThCT3dqU2hNTkhpTzQ5by1HMXVqQXg4eTQifQ.D5La0AtBtoLZK30uJc0tm75uckT8APsBm8EfRnlLkAm4_5_cS1H_e9pWsAbWVPHSUpz1-ihsGtkPVSv7rqIIvdXB6v6Q-fbm84YcrQEsLNoj10FJzSHj3Qf90k8dWC540KZkhSnpVoWMLY5cGVfg0rIcIOJu5Wc1FF-DgR57KFTeVPl4jrMSH6gp7mllsG3FB69JxsUqDHyCU3xOqE59bA1sylRULhHL3N1V7JQbiy6Ye1pFkIl_CrXrqOYyE1m7l7I1-BnlIu_rD3G5ylYY2LKIZYgSImLz-Ul9xoAKWs6nkg8TlKrKLh9OZoSMaRBxJN4bVvGaatZrBAz7Nk1JcQ","fShowDebugDetailsAriaExpanded":true,"fEnableStableEffectOnce":false,"fPreventOtcFormDoubleSubmit":true,"fEnableOtcInputAutofill":true,"fEnableWebNativeBridgeLoadFix":true,"fEnableWebNativeBridgeClientTelemetry":true,"fEnableWebAuthNTelemetry":true,"scid":1013,"hpgact":1800,"hpgid":1104,"pgid":"ConvergedSignIn","apiCanary":"PBgABDgEAAAA9VeaV3ywaSLp1O3c4_Et5RXZvU3RzQXJ0aWZhY3RzCAAAAAAAMu4SeE4Zr_IAYFo-zOqwtaAKfxAJ__MkDXhrVPD9s6DQ0l8kQxElG3qDK5QclfJxO6WrFFEJ6KRsvLliodvlSkQMb8VazwPijqoskwkJbXxWOBgkl84e22UYPy-b6_YuIc3cd0qxf-q82upkPDlqI9vz3sc_vCi9Q2C6io-FwZ3JIurdoleR0mCZLvEPEKxsCblo3OP5Zol9E-KniTTb9MuJCU2ZrazNjJhzjdlHXpBOFlUS87ua6A6FIvB1xRl9z1vE7YEp6Q_qmCXR7tvsoCf2A4VC4WlQfUek4aW_kmVYCprr6k84IfnMU6RrrjcRUz5L76nCIMf-cuY7lc7zaDQ5Nfc9qKf-jA5DIPDYi2Ug9tsM2j8CRUAhI7mLUwHsWVTig_QSDBwWJ_QIsEymUlT8VlCMR49YDYHuL9EIJAILmkOKSlhHadqCfT1tnnPGoBSIu3gegqqIYhWJfJEBqbshZ38wAYl70NlL0Uf-krp1DamVcUh4p4w97s8lapuLhmaOJRh9XbblsvVY_D2NzSxsHBAjnMift3ypm_Q8t8SK_JuZarCaBg_Ut6iUDnbV41IYUNEYLWyUTFpkYrJF7oit3_NOICoosEvqHaT62_2vrUt5S4enzHbPSscL5JwoVDkLrbwfTo-KlhBwF9qKVB1Z4IxrBgtnR2kGquYP_1BBKqFUBUROETYE3XKEiVDZ-KYNSk7P4o3UNtMQUOk0gENP4NBUrJYXa-vu1cJA3DGhWJyqly1ATnxY9LYoZyGmIAA","canary":"GSGZKget9AaXNPyiGVkdYK7CP+/8jCrnKfrV560sM6I=2:1:CANARY:kmLEps1cRxMfB64uBkFbzwe9S8mNoxzpzsuUt4Msxyg=","sCanaryTokenName":"canary","fSkipRenderingNewCanaryToken":false,"fEnableNewCsrfProtection":true,"correlationId":"8feb3ca2-1090-6000-ab3d-a8ac3129825e","sessionId":"2a68bf8e-759e-40af-9bea-abbf9b476c00","sRingId":"R4","locale":{"mkt":"en-US","lcid":1033},"slMaxRetry":2,"slReportFailure":true,"strings":{"desktopsso":{"authenticatingmessage":"Trying to sign you in"}},"enums":{"ClientMetricsModes":{"None":0,"SubmitOnPost":1,"SubmitOnRedirect":2,"InstrumentPlt":4}},"urls":{"instr":{"pageload":"https://login.microsoftonline.com/common/instrumentation/reportpageload","dssostatus":"https://login.microsoftonline.com/common/instrumentation/dssostatus"}},"browser":{"ltr":1,"Edge":1,"_Win":1,"_M153":1,"_D0":1,"Full":1,"Win81":1,"RE_WebKit":1,"b":{"name":"Edge","major":153,"minor":0},"os":{"name":"Windows","version":"10.0"},"V":"153.0"},"watson":{"url":"/common/handlers/watson","bundle":"https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/watson.min_82o5oyf7tvyeotpacdeksw2.js","sbundle":"https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/watsonsupportwithjquery.3.5.min_dc940oomzau4rsu8qesnvg2.js","fbundle":"https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/frameworksupport.min_oadrnc13magb009k4d20lg2.js","resetErrorPeriod":5,"maxCorsErrors":-1,"maxInjectErrors":5,"maxErrors":10,"maxTotalErrors":3,"expSrcs":["https://login.microsoftonline.com","https://aadcdn.msauth.net/","https://aadcdn.msftauth.net/",".login.microsoftonline.com"],"envErrorRedirect":true,"envErrorUrl":"/common/handlers/enverror"},"loader":{"cdnRoots":["https://aadcdn.msauth.net/","https://aadcdn.msftauth.net/"],"logByThrowing":true,"tenantBrandingCdnRoots":["aadcdn.msauthimages.net","aadcdn.msftauthimages.net"]},"serverDetails":{"slc":"ProdSlices","dc":"KRC","ri":"SELXXXX","ver":{"v":[2,1,25264,4]},"rt":"2026-09-20T02:01:35","et":40,"axv":"4.380.231"},"clientEvents":{"enabled":true,"telemetryEnabled":true,"useOneDSEventApi":true,"flush":60000,"autoPost":true,"autoPostDelay":1000,"minEvents":1,"maxEvents":1,"pltDelay":500,"appInsightsConfig":{"instrumentationKey":"69adc3c768bd4dc08c19416121249fcc-66f1668a-797b-4249-95e3-6c6651768c28-7293","webAnalyticsConfiguration":{"autoCapture":{"jsError":true}}},"defaultEventName":"IDUX_ESTSClientTelemetryEvent_WebWatson","serviceID":3,"endpointUrl":""},"fApplyAsciiRegexOnInput":true,"country":"IN","fBreakBrandingSigninString":true,"bsso":{"initiatePullTimeoutMs":100,"initiatePullTimeoutAction":"continue","rid":"2a68bf8e-759e-40af-9bea-abbf9b476c00","states":{"START":"start","INPROGRESS":"in-progress","END":"end","END_SSO":"end-sso","END_USERS":"end-users"},"nonce":"AwABEgEAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwUAAAAAAPwyMJCwJRwu_Z1-BUYalOAO9FxlZ2JCofJ09jlUjDYIdyl-r2fxiNjQO2Vh_pIGvZzzy3wD_SxDQFb5dUK_m4sgAA","overallTimeoutMs":4000,"telemetry":{"type":"TBAuthTelemetry","nonce":"AwABDwEAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwUAAAAAAM7UQnnuct-FheM4fPIQIezEINfpB1WtHhKR7HgFOKarWGGX_SOHvcgApWhyMHsx8bBsew0TTt3x_h_dMuP3UW5xgCQ3T9C7fJSk1BAq0GfFIAA","reportStates":["end","end-sso","end-users"]},"redirectEndStates":["end","end-users"],"cookieNames":{"aadSso":"AADSSO","winSso":"ESTSSSO","ssoTiles":"ESTSSSOTILES","ssoPulled":"SSOCOOKIEPULLED","userList":"ESTSUSERLIST"},"enabled":true,"type":"windows","reason":"Pull is needed"},"urlNoCookies":"https://login.microsoftonline.com/cookiesdisabled","fTrimChromeBssoUrl":true,"inlineMode":5,"fShowCopyDebugDetailsLink":true,"fTenantBrandingCdnAddEventHandlers":true};
-//]]></script> 
-<script type="text/javascript" nonce='RTO-6cVeN1P8TlfqWGJWVA'>//<![CDATA[
-!function(){var e=window,r=e.$Debug=e.$Debug||{},t=e.$Config||{};if(!r.appendLog){var n=[],o=0;r.appendLog=function(e){var r=t.maxDebugLog||25,i=(new Date).toUTCString()+":"+e;n.push(o+":"+i),n.length>r&&n.shift(),o++},r.getLogs=function(){return n}}}(),function(){function e(e,r){function t(i){var a=e[i];if(i<n-1){return void(o.r[a]?t(i+1):o.when(a,function(){t(i+1)}))}r(a)}var n=e.length;t(0)}function r(e,r,i){function a(){var e=!!u.method,o=e?u.method:i[0],a=u.extraArgs||[],s=n.$WebWatson;try{
-var d=t(i,!e);if(a&&a.length>0){for(var c=a.length,l=0;l<c;l++){d.push(a[l])}}o.apply(r,d)}catch(e){return void(s&&s.submitFromException&&s.submitFromException(e))}}var u=o.r&&o.r[e];return r=r||this,u&&(u.skipTimeout?a():n.setTimeout(a,0)),u}function t(e,r){return Array.prototype.slice.call(e,r?1:0)}var n=window;n.$Do||(n.$Do={"q":[],"r":[],"removeItems":[],"lock":0,"o":[]});var o=n.$Do;o.when=function(t,n){function i(e){r(e,a,u)||o.q.push({"id":e,"c":a,"a":u})}var a=0,u=[],s=1;"function"==typeof n||(a=n,
-s=2);for(var d=s;d<arguments.length;d++){u.push(arguments[d])}t instanceof Array?e(t,i):i(t)},o.register=function(e,t,n){if(!o.r[e]){o.o.push(e);var i={};if(t&&(i.method=t),n&&(i.skipTimeout=n),arguments&&arguments.length>3){i.extraArgs=[];for(var a=3;a<arguments.length;a++){i.extraArgs.push(arguments[a])}}o.r[e]=i,o.lock++;try{for(var u=0;u<o.q.length;u++){var s=o.q[u];s.id==e&&r(e,s.c,s.a)&&o.removeItems.push(s)}}catch(e){throw e}finally{if(0===--o.lock){for(var d=0;d<o.removeItems.length;d++){
-for(var c=o.removeItems[d],l=0;l<o.q.length;l++){if(o.q[l]===c){o.q.splice(l,1);break}}}o.removeItems=[]}}}},o.unregister=function(e){o.r[e]&&delete o.r[e]}}(),function(e,r){function t(){if(!a){if(!r.body){return void setTimeout(t)}a=!0,e.$Do.register("doc.ready",0,!0)}}function n(){if(!u){if(!r.body){return void setTimeout(n)}t(),u=!0,e.$Do.register("doc.load",0,!0),i()}}function o(e){(r.addEventListener||"load"===e.type||"complete"===r.readyState)&&t()}function i(){
-r.addEventListener?(r.removeEventListener("DOMContentLoaded",o,!1),e.removeEventListener("load",n,!1)):r.attachEvent&&(r.detachEvent("onreadystatechange",o),e.detachEvent("onload",n))}var a=!1,u=!1;if("complete"===r.readyState){return void setTimeout(n)}!function(){r.addEventListener?(r.addEventListener("DOMContentLoaded",o,!1),e.addEventListener("load",n,!1)):r.attachEvent&&(r.attachEvent("onreadystatechange",o),e.attachEvent("onload",n))}()}(window,document),function(){function e(){
-return(t().loader||{}).tenantBrandingCdnRoots||[]}function r(r){var t=e();if(t&&t.length>0&&r){for(var n=0;n<t.length;n++){if(t[n]&&-1!==r.indexOf(t[n])){return!0}}}return!1}function t(){return h.$Config||h.ServerData||{}}function n(e,r,t){var n=h.$Debug;n&&n.appendLog&&(r&&(e+=" '"+(r.src||r.href||"")+"'",e+=", id:"+(r.id||""),e+=", async:"+(r.async||""),e+=", defer:"+(r.defer||"")),t&&(e+=", loadDuration:"+t+"ms"),n.appendLog(e))}function o(){var e=h.$B;if(void 0===g){if(e){g=e.IE}else{
-var r=h.navigator.userAgent;g=-1!==r.indexOf("MSIE ")||-1!==r.indexOf("Trident/")}}return g}function i(){var e=h.$B;if(void 0===v){if(e){v=e.RE_Edge}else{var r=h.navigator.userAgent;v=-1!==r.indexOf("Edge")}}return v}function a(e){var r=e.indexOf("?"),t=r>-1?r:e.length,n=e.lastIndexOf(".",t);return e.substring(n,n+m.length).toLowerCase()===m}function u(){var e=t();return(e.loader||{}).slReportFailure||e.slReportFailure||!1}function s(){return(t().loader||{}).redirectToErrorPageOnLoadFailure||!1}
-function d(){return(t().loader||{}).logByThrowing||!1}function c(e){if(!o()&&!i()){return!1}var r=e.src||e.href||"";if(!r){return!0}if(a(r)){var t,n,u;try{t=e.sheet,n=t&&t.cssRules,u=!1}catch(e){u=!0}if(t&&!n&&u){return!0}if(t&&n&&0===n.length){return!0}}return!1}function l(e,r,n){var o=t(),i=o.loader||{},a=i.resourceLoadTimeout;return a>0?setTimeout(function(){r.isCircuitBreakerTriggered=!0,e&&(e.onload=null,e.onerror=null,e.onreadystatechange=null),n(),e&&(e.src&&e.removeAttribute("src"),
-e.href&&e.removeAttribute("href"),e.parentElement&&e.parentElement.removeChild(e))},a):null}function f(){function e(e){p.getElementsByTagName("head")[0].appendChild(e)}function r(e,r,t,n){var s=null;return s=a(e)?o(e):"script"===n.toLowerCase()?i(e):u(e,n),r&&(s.id=r),"function"==typeof s.setAttribute&&(s.setAttribute("crossorigin","anonymous"),t&&"string"==typeof t&&s.setAttribute("integrity",t)),s}function o(e){var r=p.createElement("link");return r.rel="stylesheet",r.type="text/css",r.href=e,r}
-function i(e){var r=p.createElement("script"),t=p.querySelector("script[nonce]");if(r.type="text/javascript",r.src=e,r.defer=!1,r.async=!1,t){var n=t.nonce||t.getAttribute("nonce");r.setAttribute("nonce",n)}return r}function u(e,r){var t=p.createElement(r);return t.src=e,t}function s(e,r){if(e&&e.length>0&&r){for(var t=0;t<e.length;t++){if(-1!==r.indexOf(e[t])){return!0}}}return!1}function d(e){if(t().fTenantBrandingCdnAddEventHandlers){var r=s(w,e)?w:E;if(!(r&&r.length>1)){return e}
-for(var n=0;n<r.length;n++){if(-1!==e.indexOf(r[n])){var o=r[n+1<r.length?n+1:0],i=e.substring(r[n].length);return"https://"!==r[n].substring(0,"https://".length)&&(o="https://"+o,i=i.substring("https://".length)),o+i}}return e}if(!(E&&E.length>1)){return e}for(var a=0;a<E.length;a++){if(0===e.indexOf(E[a])){return E[a+1<E.length?a+1:0]+e.substring(E[a].length)}}return e}function g(e,r,t,o,i){var a=0,u=$.failMessage||"Failed";if(i&&(a=Date.now()-i.startTime,
-i.id&&!i.isCircuitBreakerTriggered&&clearTimeout(i.id),i.isCircuitBreakerTriggered&&(u=$.timeoutMessage||"TimedOut")),n("[$Loader]: "+u,o,a),S[e].retry<y){return S[e].retry++,h(e,r,t),void f._ReportFailure(S[e].retry,S[e].srcPath,i)}t&&t()}function v(e,r,t,o,i){var a=0;if(c(o)){return g(e,r,t,o,i)}i&&i.id&&(clearTimeout(i.id),a=Date.now()-i.startTime),n("[$Loader]: "+($.successMessage||"Loaded"),o,a),h(e+1,r,t);var u=S[e].onSuccess;"function"==typeof u&&u(S[e].srcPath)}function h(t,o,i){if(t<S.length){
-var a=S[t];if(!a||!a.srcPath){return void h(t+1,o,i)}a.retry>0&&(a.srcPath=d(a.srcPath),a.origId||(a.origId=a.id),a.id=a.origId+"_Retry_"+a.retry);var u=r(a.srcPath,a.id,a.integrity,a.tagName),s={"id":null,"isCircuitBreakerTriggered":!1},c=function(){g(t,o,i,u,s)};u.onload=function(){v(t,o,i,u,s)},u.onerror=c,u.onreadystatechange=function(){"loaded"===u.readyState?setTimeout(function(){v(t,o,i,u,s)},500):"complete"===u.readyState&&v(t,o,i,u,s)},L&&a.retry<y&&(s.id=l(u,s,c),s.startTime=Date.now()),e(u),
-n("[$Loader]: Loading '"+(a.srcPath||"")+"', id:"+(a.id||""))}else{o&&o()}}var m=t(),y=m.slMaxRetry||2,b=m.loader||{},E=b.cdnRoots||[],L=b.enableCircuitBreaking||!1,w=b.tenantBrandingCdnRoots||[],$=this,S=[];$.retryOnError=!0,$.successMessage="Loaded",$.failMessage="Error",$.Add=function(e,r,t,n,o,i){e&&S.push({"srcPath":e,"id":r,"retry":n||0,"integrity":t,"tagName":o||"script","onSuccess":i})},$.AddForReload=function(e,r){var t=e.src||e.href||"";$.Add(t,"AddForReload",e.integrity,1,e.tagName,r)},
-$.AddIf=function(e,r,t){e&&$.Add(r,t)},$.Load=function(e,r){h(0,e,r)}}var g,v,h=window,p=h.document,m=".css";f.On=function(e,r,t){if(!e){throw"The target element must be provided and cannot be null."}r?f.OnError(e,t):f.OnSuccess(e,t)},f.OnSuccess=function(e,t){if(!e){throw"The target element must be provided and cannot be null."}if(c(e)){return f.OnError(e,t)}var o=e.src||e.href||"",i=u(),a=s();n("[$Loader]: Loaded",e);var d=new f;d.failMessage="Reload Failed",d.successMessage="Reload Success",
-d.Load(null,function(){var e=r(o);if(i&&!e){throw"Unexpected state. ResourceLoader.Load() failed despite initial load success. ['"+o+"']"}a&&!e&&(document.location.href="/error.aspx?err=504"),e&&n("[$Loader]: Silently handled tenant branding CDN failure ['"+o+"']")})},f.OnError=function(e,t,o){var i=e.src||e.href||"",a=u(),d=s();if(!e){throw"The target element must be provided and cannot be null."}n("[$Loader]: Failed",e);var c=new f;c.failMessage="Reload Failed",c.successMessage="Reload Success",
-c.AddForReload(e,t),c.Load(null,function(){var e=r(i);if(a&&!e){throw"Failed to load external resource ['"+i+"']"}d&&!e&&(document.location.href="/error.aspx?err=504"),e&&n("[$Loader]: Silently handled tenant branding CDN failure ['"+i+"']")}),f._ReportFailure(0,i,o)},f._ReportFailure=function(e,t,n){if(d()&&!o()&&!r(t)){var i="Failed to load";throw n&&n.isCircuitBreakerTriggered&&(i="Timed out while loading"),"[Retry "+e+"] "+i+" external resource ['"+t+"'], reloading from fallback CDN endpoint"}},
-h.$Loader=f}(),function(){function e(){if(!E){var e=new h.$Loader;e.AddIf(!h.jQuery,m.sbundle,"WebWatson_DemandSupport"),m.sbundle=null,delete m.sbundle,e.AddIf(!h.$Api,m.fbundle,"WebWatson_DemandFramework"),m.fbundle=null,delete m.fbundle,e.Add(m.bundle,"WebWatson_DemandLoaded"),e.Load(r,t),E=!0}}function r(){if(h.$WebWatson){if(h.$WebWatson.isProxy){return void t()}y.when("$WebWatson.full",function(){for(;b.length>0;){var e=b.shift();e&&h.$WebWatson[e.cmdName].apply(h.$WebWatson,e.args)}})}}function t(){
-if(!h.$WebWatson||h.$WebWatson.isProxy){if(!L&&JSON){try{var e=new XMLHttpRequest;e.open("POST",m.url),e.setRequestHeader("Accept","application/json"),e.setRequestHeader("Content-Type","application/json; charset=UTF-8"),e.setRequestHeader("canary",p.apiCanary),e.setRequestHeader("client-request-id",p.correlationId),e.setRequestHeader("hpgid",p.hpgid||0),e.setRequestHeader("hpgact",p.hpgact||0);for(var r=-1,t=0;t<b.length;t++){if("submit"===b[t].cmdName){r=t;break}}var o=b[r]?b[r].args||[]:[],i={"sr":m.sr,
-"ec":"Failed to load external resource [Core Watson files]","wec":55,"idx":1,"pn":p.pgid||"","sc":p.scid||0,"hpg":p.hpgid||0,"msg":"Failed to load external resource [Core Watson files]","url":o[1]||"","ln":0,"ad":0,"an":!1,"cs":"","sd":p.serverDetails,"ls":null,"diag":v(m)};e.send(JSON.stringify(i))}catch(e){}L=!0}m.loadErrorUrl&&window.location.assign(m.loadErrorUrl)}n()}function n(){b=[],h.$WebWatson=null}function o(r){return function(){var t=arguments;b.push({"cmdName":r,"args":t}),e()}}function i(){
-var e=["foundException","resetException","submit"],r=this;r.isProxy=!0;for(var t=e.length,n=0;n<t;n++){var i=e[n];i&&(r[i]=o(i))}}function a(e,r,t,n,o,i,a){var u=h.event;return i||(i=l(o||u,a?a+2:2)),h.$Debug&&h.$Debug.appendLog&&h.$Debug.appendLog("[WebWatson]:"+(e||"")+" in "+(r||"")+" @ "+(t||"??")),$.submit(e,r,t,n,o||u,i,a)}function u(e,r){return{"signature":e,"args":r,"toString":function(){return this.signature}}}function s(e){for(var r=[],t=e.split("\n"),n=0;n<t.length;n++){r.push(u(t[n],[]))}
-return r}function d(e){for(var r=[],t=e.split("\n"),n=0;n<t.length;n++){var o=u(t[n],[]);t[n+1]&&(o.signature+="@"+t[n+1],n++),r.push(o)}return r}function c(e){if(!e){return null}try{if(e.stack){return s(e.stack)}if(e.error){if(e.error.stack){return s(e.error.stack)}}else if(window.opera&&e.message){return d(e.message)}}catch(e){}return null}function l(e,r){var t=[];try{for(var n=arguments.callee;r>0;){n=n?n.caller:n,r--}for(var o=0;n&&o<w;){var i="InvalidMethod()";try{i=n.toString()}catch(e){}
-var a=[],s=n.args||n.arguments;if(s){for(var d=0;d<s.length;d++){a[d]=s[d]}}t.push(u(i,a)),n=n.caller,o++}}catch(e){t.push(u(e.toString(),[]))}var l=c(e);return l&&(t.push(u("--- Error Event Stack -----------------",[])),t=t.concat(l)),t}function f(e){if(e){try{var r=/function (.{1,})\(/,t=r.exec(e.constructor.toString());return t&&t.length>1?t[1]:""}catch(e){}}return""}function g(e){if(e){try{if("string"!=typeof e&&JSON&&JSON.stringify){var r=f(e),t=JSON.stringify(e)
-;return t&&"{}"!==t||(e.error&&(e=e.error,r=f(e)),(t=JSON.stringify(e))&&"{}"!==t||(t=e.toString())),r+":"+t}}catch(e){}}return""+(e||"")}function v(e){var r=[];try{if(jQuery?(r.push("jQuery v:"+jQuery().jquery),jQuery.easing?r.push("jQuery.easing:"+JSON.stringify(jQuery.easing)):r.push("jQuery.easing is not defined")):r.push("jQuery is not defined"),e&&e.expectedVersion&&r.push("Expected jQuery v:"+e.expectedVersion),y){var t,n="";for(t=0;t<y.o.length;t++){n+=y.o[t]+";"}for(r.push("$Do.o["+n+"]"),n="",
-t=0;t<y.q.length;t++){n+=y.q[t].id+";"}r.push("$Do.q["+n+"]")}if(h.$Debug&&h.$Debug.getLogs){var o=h.$Debug.getLogs();o&&o.length>0&&(r=r.concat(o))}if(b){for(var i=0;i<b.length;i++){var a=b[i];if(a&&"submit"===a.cmdName){try{if(JSON&&JSON.stringify){var u=JSON.stringify(a);u&&r.push(u)}}catch(e){r.push(g(e))}}}}}catch(e){r.push(g(e))}return r}var h=window,p=h.$Config||{},m=p.watson,y=h.$Do;if(!h.$WebWatson&&m){var b=[],E=!1,L=!1,w=10,$=h.$WebWatson=new i;$.CB={},$._orgErrorHandler=h.onerror,h.onerror=a,
-$.errorHooked=!0,y.when("jQuery.version",function(e){m.expectedVersion=e}),y.register("$WebWatson")}}(),function(){function e(e,r){for(var t=r.split("."),n=t.length,o=0;o<n&&null!==e&&void 0!==e;){e=e[t[o++]]}return e}function r(r){var t=null;return null===s&&(s=e(i,"Constants")),null!==s&&r&&(t=e(s,r)),null===t||void 0===t?"":t.toString()}function t(t){var n=null;return null===a&&(a=e(i,"$Config.strings")),null!==a&&t&&(n=e(a,t.toLowerCase())),null!==n&&void 0!==n||(n=r(t)),
-null===n||void 0===n?"":n.toString()}function n(e,r){var n=null;return e&&r&&r[e]&&(n=t("errors."+r[e])),n||(n=t("errors."+e)),n||(n=t("errors."+d)),n||(n=t(d)),n}function o(t){var n=null;return null===u&&(u=e(i,"$Config.urls")),null!==u&&t&&(n=e(u,t.toLowerCase())),null!==n&&void 0!==n||(n=r(t)),null===n||void 0===n?"":n.toString()}var i=window,a=null,u=null,s=null,d="GENERIC_ERROR";i.GetString=t,i.GetErrorString=n,i.GetUrl=o}(),function(){var e=window,r=e.$Config||{};e.$B=r.browser||{}}(),function(){
-function e(e,r,t){e&&e.addEventListener?e.addEventListener(r,t):e&&e.attachEvent&&e.attachEvent("on"+r,t)}function r(r,t){e(document.getElementById(r),"click",t)}function t(r,t){var n=document.getElementsByName(r);n&&n.length>0&&e(n[0],"click",t)}var n=window;n.AddListener=e,n.ClickEventListenerById=r,n.ClickEventListenerByName=t}();
-//]]></script> 
-<script type="text/javascript" nonce='RTO-6cVeN1P8TlfqWGJWVA'>//<![CDATA[
-!function(e,t){function r(t){return function(){t.parentNode&&(t.onload=null,t.onerror=null,t.parentNode.removeChild(t)),e.$Loader.OnError(t,void 0,{"isCircuitBreakerTriggered":!0}),t.src&&t.removeAttribute("src"),t.href&&t.removeAttribute("href")}}function n(e,t){e.addEventListener("load",function(){clearTimeout(t)},{"once":!0}),e.addEventListener("error",function(){clearTimeout(t)},{"once":!0})}!function(){var a="function"==typeof e.MutationObserver,o=t.getElementsByTagName("head")[0]
-;if(a&&o&&e.addEventListener){var i=e.ServerData||e.$Config||{},d=i.loader||{};if(d.enableCircuitBreaking&&d.resourceLoadTimeout>0&&i.slMaxRetry>0){var u=new MutationObserver(function(e){for(var t=0;t<e.length;t++){var a=e[t];if("childList"===a.type){for(var o=0;o<a.addedNodes.length;o++){var i=a.addedNodes[o];if(i instanceof Element){var u="cdn"===i.getAttribute("data-loader");if(u){var c=setTimeout(r(i),d.resourceLoadTimeout);n(i,c)}}}}}});e.addEventListener("load",function(){u.disconnect()}),
-u.observe(o,{"childList":!0,"subtree":!1})}}}(),function(){var r=t.getElementsByTagName("head")[0];r&&r.addEventListener&&(r.addEventListener("error",function(t){null!==t.target&&"cdn"===t.target.getAttribute("data-loader")&&e.$Loader.OnError(t.target)},!0),r.addEventListener("load",function(t){null!==t.target&&"cdn"===t.target.getAttribute("data-loader")&&e.$Loader.OnSuccess(t.target)},!0))}()}(window,document);
-//]]></script>
-
-    
-        <link rel="prefetch" href="https://login.live.com/Me.htm?v=3" />
-                <link rel="shortcut icon" href="https://aadcdn.msauth.net/shared/1.0/content/images/favicon_a_eupayfgghqiai7k9sol6lg2.ico" />
-
-    <script type="text/javascript" nonce='RTO-6cVeN1P8TlfqWGJWVA'>
-        ServerData = $Config;
-    </script>
-
-
-    
-    <link data-loader="cdn" crossorigin="anonymous" href="https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/converged.v2.login.min_pzfy2abhlubh6bv_dyvwha2.css" rel="stylesheet" />
-
-
-    <script data-loader="cdn" crossorigin="anonymous" src="https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_gVhYQwpSW-2B6af-e8QqcQ2.js" integrity='sha384-C6vUkhxXFQPRLJT0qjqDQjO6XPIsQYE1Sj17tM4EDmFM6yIQW4NX3tPdhL9dts70' nonce='RTO-6cVeN1P8TlfqWGJWVA'></script>
-
-    <script data-loader="cdn" crossorigin="anonymous" src="https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/ux.converged.login.strings-en.min_uhq9m5ofgcbvjcqhlkybyw2.js" nonce='RTO-6cVeN1P8TlfqWGJWVA'></script>
-
-
-
+.scrim{position:fixed;inset:0;background:rgba(4,10,18,.65);backdrop-filter:blur(4px);z-index:40;
+ opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);z-index:50;
+ background:linear-gradient(170deg,#102438,#0a1724);border-left:1px solid var(--stroke);
+ box-shadow:-30px 0 70px rgba(0,0,0,.6);transform:translateX(104%);transition:transform .42s cubic-bezier(.2,.9,.25,1);
+ display:flex;flex-direction:column}
+.drawer.show{transform:none}
+.dhead{padding:24px 26px 18px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;gap:14px;align-items:center;position:relative}
+.dhead .ring{width:56px;height:56px;border-radius:50%;padding:2.5px;flex-shrink:0}
+.dhead .name{font-size:19px;font-weight:800;color:#fff}
+.dhead .role{font-size:12.5px;color:var(--muted);margin-top:2px}
+.dclose{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.1);border:1px solid var(--stroke);
+ color:#dce9f8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;transition:.2s}
+.dclose:hover{background:rgba(255,255,255,.22);transform:rotate(90deg)}
+.dbody{flex:1;overflow-y:auto;padding:22px 26px 28px}
+.dbody::-webkit-scrollbar{width:7px}.dbody::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:8px}
+.dmedia{width:100%;border-radius:14px;margin-bottom:18px;display:block;box-shadow:0 12px 30px rgba(0,0,0,.4);
+ background:#0a1724;max-height:340px;object-fit:cover}
+.quote{font-size:16px;line-height:1.8;color:#e7f0fb;white-space:pre-wrap;position:relative;padding-left:16px;
+ border-left:3px solid var(--accent2)}
+.dsign{margin-top:20px;font-family:'Segoe Script','Brush Script MT',cursive;font-size:23px;color:#8ec5ff}
+.sect{margin-top:24px;padding-top:18px;border-top:1px dashed rgba(255,255,255,.14)}
+.sect h4{font-size:11.5px;text-transform:uppercase;letter-spacing:1.4px;color:#8ec5ff;margin-bottom:12px;font-weight:800}
+.reactions{display:flex;gap:9px;flex-wrap:wrap}
+.react{background:rgba(255,255,255,.08);border:1px solid var(--stroke);border-radius:22px;padding:8px 14px;
+ font-size:15px;cursor:pointer;transition:.18s;user-select:none;display:inline-flex;align-items:center;gap:6px;color:#fff}
+.react:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.react.active{background:rgba(142,197,255,.28);border-color:#8ec5ff}
+.react .n{font-size:12px;color:#bcd6f0;font-weight:700}
+.replybox textarea,.replybox input.remail{width:100%;padding:12px 14px;border:1px solid var(--stroke);border-radius:12px;
+ font-size:14px;font-family:inherit;background:rgba(255,255,255,.07);color:#fff;outline:none;transition:.2s}
+.replybox textarea{min-height:82px;resize:vertical}
+.replybox input.remail{margin-top:10px}
+.replybox textarea::placeholder,.replybox input.remail::placeholder{color:#7e99b8}
+.replybox textarea:focus,.replybox input.remail:focus{border-color:var(--accent2);background:rgba(255,255,255,.12)}
+.send{margin-top:12px;border:none;background:linear-gradient(135deg,#2F5597,#5B9BD5);color:#fff;padding:12px 22px;
+ border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;transition:.22s;width:100%}
+.send:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(47,85,151,.55)}
+.send:disabled{opacity:.65;cursor:default;transform:none}
+.hint{font-size:11.5px;color:#7e99b8;margin-top:9px;text-align:center}
+.dnav{display:flex;gap:10px;padding:14px 26px 20px;border-top:1px solid rgba(255,255,255,.09)}
+.dnav button{flex:1;background:rgba(255,255,255,.08);border:1px solid var(--stroke);color:#dce9f8;
+ padding:11px;border-radius:12px;cursor:pointer;font-size:13px;font-weight:600;transition:.2s}
+.dnav button:hover{background:rgba(255,255,255,.18)}
+.dnav button:disabled{opacity:.35;cursor:default}
+footer{margin-top:60px;text-align:center;position:relative;z-index:2}
+.fdiv{height:1px;background:linear-gradient(90deg,transparent,#5B9BD5,transparent);margin:0 auto 26px;max-width:420px}
+.sign{font-family:'Segoe Script','Brush Script MT',cursive;font-size:34px;color:#fff}
+.meta{font-size:13px;color:var(--muted);margin-top:3px}
+.contacts{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.contacts a{font-size:13px;text-decoration:none;color:#dce9f8;border:1px solid var(--stroke);
+ background:var(--glass);backdrop-filter:blur(8px);padding:10px 18px;border-radius:24px;transition:.22s}
+.contacts a:hover{background:#fff;color:var(--accent);transform:translateY(-3px)}
+.music{position:fixed;left:22px;bottom:22px;z-index:35;display:flex;align-items:center;gap:10px;
+ background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(14px);
+ padding:10px 16px 10px 12px;border-radius:30px;cursor:pointer;transition:.25s;color:#dce9f8;font-size:13px;font-weight:600}
+.music:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+.eq{display:flex;align-items:flex-end;gap:2.5px;height:16px}
+.eq i{width:3px;background:linear-gradient(180deg,#8ec5ff,#f2b544);border-radius:2px;height:4px;transition:.2s}
+.music.playing .eq i{animation:eq .9s ease-in-out infinite}
+.music.playing .eq i:nth-child(2){animation-delay:.15s}
+.music.playing .eq i:nth-child(3){animation-delay:.3s}
+.music.playing .eq i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+.fab{position:fixed;right:22px;bottom:22px;z-index:35;background:linear-gradient(135deg,#e8590c,#f2b544);color:#fff;
+ border:none;border-radius:30px;padding:14px 22px;font-size:15px;font-weight:800;cursor:pointer;
+ box-shadow:0 14px 34px rgba(232,89,12,.55);transition:.22s}
+.fab:hover{transform:translateY(-4px) scale(1.04)}
+.modal-scrim{position:fixed;inset:0;background:rgba(4,10,18,.7);backdrop-filter:blur(5px);display:none;
+ align-items:center;justify-content:center;z-index:60;padding:20px}
+.modal-scrim.show{display:flex}
+.modal{background:linear-gradient(165deg,#13293f,#0b1b2a);border:1px solid var(--stroke);max-width:420px;width:100%;
+ border-radius:24px;padding:34px 30px;text-align:center;box-shadow:0 40px 90px rgba(0,0,0,.65);
+ animation:pop .38s cubic-bezier(.2,.9,.3,1.25) both;position:relative}
+@keyframes pop{from{opacity:0;transform:scale(.86) translateY(14px)}to{opacity:1;transform:none}}
+.modal .emoji{font-size:52px}
+.modal h3{color:#fff;font-size:23px;margin:12px 0 10px;font-weight:800}
+.modal p{font-size:15.5px;line-height:1.7;color:#bcd6f0}
+.modal .close{margin-top:22px;border:none;background:linear-gradient(135deg,#2F5597,#5B9BD5);color:#fff;
+ padding:12px 26px;border-radius:26px;font-size:14px;font-weight:700;cursor:pointer}
+.confetti{position:fixed;top:-12px;width:9px;height:14px;opacity:.95;animation:fall linear forwards;z-index:70;border-radius:2px}
+@keyframes fall{to{transform:translateY(106vh) rotate(620deg);opacity:0}}
+@media(max-width:640px){
+ .drawer{width:100%;height:88%;top:auto;bottom:0;border-left:none;border-top:1px solid var(--stroke);
+  border-radius:24px 24px 0 0;transform:translateY(104%)}
+ .drawer.show{transform:none}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+ .card{padding:18px 16px}.card .peek{display:none}
+ .music{padding:10px 13px}.music .lbl{display:none}
+ .oops{padding:28px 20px}.opt{flex:1 1 100%;max-width:100%}
+}
+</style>
 </head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
 
-<body data-bind="defineGlobals: ServerData, bodyCssClass" class="cb" style="display: none">
-    <script type="text/javascript" nonce='RTO-6cVeN1P8TlfqWGJWVA'>//<![CDATA[
-!function(){var e=window,o=e.document,i=e.$Config||{};if(e.self===e.top){o&&o.body&&(o.body.style.display="block")}else if(!i.allowFrame){try{var s=e.self.location.href,t=s.indexOf("#"),l=-1!==t,n=s.indexOf("?"),f=l?t:s.length,a=-1===n||l&&n>t?"?":"&";s=s.substr(0,f)+a+"iframe-request-id="+i.sessionId+s.substr(f),e.top.location=s}catch(e){}}}();
-//]]></script>
-    
+<div class="wrap">
+  <header>
+    <div class="badge"><span class="dot"></span> Thank you &amp; farewell</div>
+    <h1>It's been an <span class="grad">incredible journey</span> 🚀</h1>
+    <p>After a wonderful chapter at 3i Infotech, I'm moving on to my next adventure. I've written a little something for each of you — find your name and open your note. 💙</p>
+    <div class="stats">
+      <div class="stat"><b id="sPeople">0</b><span>Notes</span></div>
+      <div class="stat"><b>∞</b><span>Memories</span></div>
+      <div class="stat"><b>1</b><span>Big thank you</span></div>
+    </div>
+  </header>
+
+  <div class="searchbar">
+    <span class="ico">🔎</span>
+    <input id="search" type="text" placeholder="Find your name…" oninput="filter()">
+  </div>
+  <div class="count" id="count"></div>
+
+  <div class="grid" id="grid"></div>
+
+  <!-- oops / missed you -->
+  <div class="oops hidden" id="noresult">
+    <span class="em">🙈</span>
+    <h3>Oops… it seems I missed you!</h3>
+    <p>No card with that name — which means my memory failed me, not that you mattered any less. Genuinely sorry. Let's fix it the old-fashioned way:</p>
+    <div class="opts">
+      <a class="opt" href="mailto:nitin_singh0501@live.com?subject=Chai%20at%20Seawoods%20cafeteria%3F&body=Hi%20Nitin%2C%20you%20missed%20me%20on%20the%20page.%20I'm%20at%20Seawoods%20%E2%80%94%20let's%20grab%20that%20chai!">
+        <span class="oi">☕</span>
+        <b>I'm at Seawoods</b>
+        <span>Cafeteria, hot chai or coffee, on me. Ping me and let's do a proper catch-up before I go.</span>
+      </a>
+      <a class="opt" href="tel:+919867405566">
+        <span class="oi">📞</span>
+        <b>I'm somewhere else</b>
+        <span>Then no waiting — tap to call me right now. Chai over the phone counts too.</span>
+      </a>
+    </div>
+    <p class="ps">P.S. — Yes, the chai is on me. Yes, I'll still say "let's connect on LinkedIn." Some traditions must survive. 😄</p>
+  </div>
+
+  <footer>
+    <div class="fdiv"></div>
+    <div class="sign">Nitin Singh</div>
+    <div class="meta">Senior Manager – Partnerships &amp; Alliances</div>
+    <div class="contacts">
+      <a href="mailto:nitin_singh0501@live.com?subject=Staying in touch">✉️ Email me</a>
+      <a href="https://www.linkedin.com/in/nitin-singh-75741911a" target="_blank" rel="noopener">in LinkedIn</a>
+      <a href="tel:+919867405566">📞 +91 98674 05566</a>
+    </div>
+    <p class="meta" style="margin-top:20px">A personal thank-you page — nothing to sign in, nothing to download.</p>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="dhead">
+    <div class="ring" id="dRing"><div class="avatar" id="dAv">–</div></div>
+    <div><div class="name" id="dName">–</div><div class="role" id="dRole">–</div></div>
+    <button class="dclose" onclick="closeDrawer()" aria-label="Close">✕</button>
+  </div>
+  <div class="dbody">
+    <div id="dMedia"></div>
+    <div class="quote" id="dMsg"></div>
+    <div class="dsign">— Nitin</div>
+    <div class="sect">
+      <h4>React to this note</h4>
+      <div class="reactions" id="dReact"></div>
+    </div>
+    <div class="sect replybox">
+      <h4>Leave Nitin a private note 🤫</h4>
+      <textarea class="rmsg" placeholder="Write something back to Nitin…"></textarea>
+      <input class="remail" type="email" placeholder="Your email (optional — so Nitin can reply)" autocomplete="off">
+      <input class="hpot" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
+      <button class="send" id="dSend">Send privately 🔒</button>
+      <div class="hint">Private — seen only by Nitin, never by other visitors.</div>
+    </div>
+  </div>
+  <div class="dnav"><button id="dPrev">‹ Previous</button><button id="dNext">Next ›</button></div>
+</aside>
+
+<audio id="bgm" loop preload="none"><source src="music/ambient.mp3" type="audio/mpeg"></audio>
+<div class="music" id="musicBtn" onclick="toggleMusic()" title="Background music">
+  <span class="eq"><i></i><i></i><i></i><i></i></span><span class="lbl" id="musicLbl">Play music</span>
+</div>
+
+<button class="fab" onclick="openFeedback()">💬 Feedback</button>
+<div class="modal-scrim" id="fbOverlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="emoji" id="fbEmoji">🙃</div>
+    <h3 id="fbTitle">Feedback? Cute.</h3>
+    <p id="fbText"></p>
+    <button class="close" onclick="closeFeedback()">Fine, I'll live with it 😌</button>
+  </div>
+</div>
+
+<script>
+const REPLY_EMAIL  = "nitin_singh0501@live.com";
+const FORMSPREE_ID = "mnpnapnw";
+
+/* Shown when a person has no custom note yet */
+const DEFAULT_MSG = "Thank you for being part of my journey at 3i Infotech. Whether we chased RFPs, solved a last-minute crisis, or just shared a chai and a laugh — it mattered. I'm grateful for you, and I hope our paths cross again soon. 💙";
+
+/* ===== PEOPLE (compiled from your Excel) =====
+   media accepts:
+     "gifs/name.gif"      -> image
+     "videos/name.mp4"    -> video (also .webm / .mov)
+     ""                   -> nothing
+   Filenames are CASE-SENSITIVE on GitHub Pages.
+=============================================== */
+const PEOPLE = [
+ {
+  "name": "Avinash Kodwaney",
+  "role": "Vice President - Sales",
+  "msg": "Whenever you, me and Presales end up in the same room, the conversation goes exactly like this 👆 — every single time. Thank you for the energy, the push and the good humour. It's been a genuine pleasure!",
+  "media": "PASTE_MEDIA_HERE"
+ },
+ {
+  "name": "Gaurang Gore",
+  "role": "Associate Vice President - PMO",
+  "msg": "Someone to Gaurang: “Murgi pehle aayi ya anda?”\nGaurang: “Flowbit.”\nSomeone: **processing the response**\nGaurang again: “Deal size 3Cr ke upar hai ya 3Cr ke neeche?”\nWhen it comes to Flowbit — there is only one Gaurang. Thank you for everything!",
+  "media": "PASTE_MEDIA_HERE"
+ },
+ {
+  "name": "Charul Vinodiya",
+  "role": "Associate Manager - Sales",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Gourav Sangare",
+  "role": "Manager - Sales",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Prakash Jha",
+  "role": "Vice President - Sales",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Shivani Rai",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Poonam Deshmukh",
+  "role": "Bid Management",
+  "msg": "Tumne itna RFP submit kiya hai life me; ek din RFP reh jayega aur tum submit ho jaogi 😂 Thank you for the patience, the precision and the late-night saves.",
+  "media": ""
+ },
+ {
+  "name": "Sujal Rane",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Yograj Lekurwale",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Nabil Shaikh",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Glen Correia",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Avani Raj",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Amit Kumar",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Trina Singh",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Shubham Seth",
+  "role": "Bid Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Amitav Sarkar",
+  "role": "Associate Vice President - Partners And Alliances",
+  "msg": "",
+  "media": "gifs/grateful.gif"
+ },
+ {
+  "name": "Srujith Kumar",
+  "role": "Associate Manager - Technology",
+  "msg": "His reaction whenever he spots a new employee at 3i 👆 Never change, Srujith. Thank you for all the help and the laughs!",
+  "media": "PASTE_MEDIA_HERE"
+ },
+ {
+  "name": "Domnik Bangera",
+  "role": "Associate Manager - Administration",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Satish Saini",
+  "role": "Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Ganesh Mathur",
+  "role": "Associate Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Surender Sharma",
+  "role": "Senior Manager - Project Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Gaurav Arora",
+  "role": "Senior Manager - Project Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Raghavendra Singh",
+  "role": "Manager - Project",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Mangesh Shelar",
+  "role": "Associate Manager - Logistics",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Bachchanram Jaiswal",
+  "role": "Lead Engineer - Technical",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Saraswathy Ravishankar",
+  "role": "Associate Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Rizwan B",
+  "role": "Deputy Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Abhishek Pandey",
+  "role": "Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Makarand Mohandas",
+  "role": "Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Ramesh Hodge",
+  "role": "Manager - Project",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Chandana Saha",
+  "role": "Senior Engineer - Infrastructure Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Avijit Ghosh",
+  "role": "Engineer - Infrastructure Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Vivek More",
+  "role": "Senior Engineer - Infrastructure Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Shyam Tiwari",
+  "role": "Senior Manager - Project Management",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Nawin Singh",
+  "role": "Lead Engineer - Project",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Rajnish Sinha",
+  "role": "Manager - Technical Administration",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Vineet Kumar",
+  "role": "Associate Vice President - Software Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Sanket Rane",
+  "role": "Vice President - ADMS & Testing CoE",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Nitin Jaitly",
+  "role": "Associate Vice President - IT Infrastructure",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Chirag Manjrawala",
+  "role": "Senior Manager - IT Infrastructure",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Manish Falwaria",
+  "role": "Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Austin Rodrigues",
+  "role": "Deputy Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Saikat Banarjee",
+  "role": "Deputy Vice President - Delivery",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Rajlaxmi Nair",
+  "role": "Associate Vice President - Procurement",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Shweta Juvekar",
+  "role": "Manager - Procurement",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Margrate",
+  "role": "Senior Executive - Procurement",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Sanjay Khade",
+  "role": "Senior Manager - Finance and Accounting",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "Sachin Tate",
+  "role": "Manager - Accounts Payables",
+  "msg": "His reaction every single time I asked about OEM payments 👆 Thank you for always sorting it out in the end, Sachin!",
+  "media": "gifs/Sachin.gif"
+ },
+ {
+  "name": "Naqeeb",
+  "role": "Senior Executive - Financial Planning and Analysis",
+  "msg": "",
+  "media": ""
+ },
+ {
+  "name": "To Everyone Else",
+  "role": "Corporate Functions",
+  "msg": "To everyone I worked with at 3i Infotech — thank you for the trust, the grind and the wins. We built something real together. Keep raising the bar, and don't be a stranger!",
+  "media": "gifs/thankyou.gif"
+ }
+];
+/* =============================================== */
+
+const safeStore={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+                 set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const REACTS=[["love","❤️"],["like","👍"],["haha","😂"],["cel","🎉"],["clap","👏"]];
+const PALETTES=[["#5B9BD5","#2F5597"],["#f2b544","#e8590c"],["#7ee0c0","#0e8f7e"],
+                ["#ff9db0","#c2185b"],["#b39ddb","#5e35b1"],["#8ec5ff","#1565c0"]];
+const grid=document.getElementById('grid');
+let view=[...PEOPLE], current=-1;
+
+const msgOf=p=>p.msg&&p.msg.trim()?p.msg:DEFAULT_MSG;
+const initials=n=>n.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const slug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+const pal=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))>>>0;return PALETTES[h%PALETTES.length];};
+const ring=n=>{const[a,b]=pal(n);return `linear-gradient(135deg,${a},${b})`;};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const hasMedia=m=>m && !/PASTE_DIRECT_GIF_URL_HERE|PASTE_MEDIA_HERE/.test(m);
+const isVideo=m=>/\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(m);
+
+function render(list){
+  view=list; grid.innerHTML='';
+  list.forEach((p,i)=>{
+    const c=document.createElement('div');
+    c.className='card';c.style.animationDelay=(Math.min(i,20)*.04)+'s';c.tabIndex=0;c.setAttribute('role','button');
+    const badge = hasMedia(p.media) ? `<span class="play">${isVideo(p.media)?'🎬':'🎞️'}</span>` : '';
+    c.innerHTML=`${badge}<span class="env">💌</span>
+      <div class="ring" style="background:${ring(p.name)}"><div class="avatar">${initials(p.name)}</div></div>
+      <div class="name">${esc(p.name)}</div><div class="role">${esc(p.role||'')}</div>
+      <div class="peek">${esc(msgOf(p))}</div><div class="open-hint">Open my note →</div>`;
+    c.addEventListener('click',()=>openDrawer(i));
+    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer(i);}});
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+    grid.appendChild(c);
+  });
+  document.getElementById('noresult').classList.toggle('hidden',list.length>0);
+}
+function filter(){
+  const q=document.getElementById('search').value.trim().toLowerCase();
+  render(PEOPLE.filter(p=>p.name.toLowerCase().includes(q)||(p.role||'').toLowerCase().includes(q)));
+}
+
+/* ---------- media: image OR video ---------- */
+function renderMedia(src){
+  const box=document.getElementById('dMedia');
+  box.innerHTML='';
+  if(!hasMedia(src)) return;
+  if(isVideo(src)){
+    const v=document.createElement('video');
+    v.src=src; v.className='dmedia';
+    v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+    v.setAttribute('playsinline',''); v.controls=true; v.preload='metadata';
+    v.onerror=()=>box.innerHTML='';
+    box.appendChild(v);
+    v.play().catch(()=>{});
+  }else{
+    const im=document.createElement('img');
+    im.src=src; im.className='dmedia'; im.alt=''; im.loading='lazy';
+    im.onerror=()=>box.innerHTML='';
+    box.appendChild(im);
+  }
+}
+
+function openDrawer(i){
+  current=i; const p=view[i]; if(!p)return;
+  document.getElementById('dRing').style.background=ring(p.name);
+  document.getElementById('dAv').textContent=initials(p.name);
+  document.getElementById('dName').textContent=p.name;
+  document.getElementById('dRole').textContent=p.role||'';
+  document.getElementById('dMsg').textContent=msgOf(p);
+  renderMedia(p.media);
+  buildReacts(slug(p.name));
+  const box=document.querySelector('.replybox');
+  box.querySelector('.rmsg').value='';box.querySelector('.remail').value='';
+  const btn=document.getElementById('dSend');btn.disabled=false;btn.textContent='Send privately 🔒';
+  btn.onclick=()=>sendReply(btn,p.name);
+  document.getElementById('dPrev').disabled=i<=0;
+  document.getElementById('dNext').disabled=i>=view.length-1;
+  document.getElementById('drawer').classList.add('show');
+  document.getElementById('scrim').classList.add('show');
+  document.querySelector('.dbody').scrollTop=0;
+  burst(28);
+}
+function closeDrawer(){
+  document.getElementById('dMedia').innerHTML='';   // stop video playback
+  document.getElementById('drawer').classList.remove('show');
+  document.getElementById('scrim').classList.remove('show');
+  current=-1;
+}
+document.getElementById('dPrev').onclick=()=>openDrawer(current-1);
+document.getElementById('dNext').onclick=()=>openDrawer(current+1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeDrawer();
+  if(document.getElementById('drawer').classList.contains('show')){
+    if(e.key==='ArrowRight'&&current<view.length-1)openDrawer(current+1);
+    if(e.key==='ArrowLeft'&&current>0)openDrawer(current-1);
+  }
+});
+function buildReacts(id){
+  const bar=document.getElementById('dReact');bar.innerHTML='';
+  REACTS.forEach(([type,emo])=>{
+    const on=safeStore.get(`react_${id}_${type}`)==='1';
+    const s=document.createElement('span');
+    s.className='react'+(on?' active':'');
+    s.innerHTML=`${emo} <span class="n">${on?1:0}</span>`;
+    s.onclick=()=>{const act=s.classList.toggle('active');
+      s.querySelector('.n').textContent=act?1:0;
+      safeStore.set(`react_${id}_${type}`,act?'1':'0');if(act)burst(16);};
+    bar.appendChild(s);
+  });
+}
+function sendReply(btn,person){
+  const box=document.querySelector('.replybox');
+  const txt=box.querySelector('.rmsg').value.trim();
+  const email=box.querySelector('.remail').value.trim();
+  if(box.querySelector('.hpot').value){btn.textContent='Sent 🎉';return;}
+  if(!txt){alert('Write a little something first 🙂');return;}
+  btn.disabled=true;btn.textContent='Sending…';
+  if(FORMSPREE_ID){
+    const payload={card:person,message:txt};if(email)payload.email=email;
+    fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',
+      headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify(payload)})
+      .then(r=>{if(r.ok){btn.textContent='Sent privately 🔒✅';box.querySelector('.rmsg').value='';
+        box.querySelector('.remail').value='';burst(50);}else{btn.disabled=false;btn.textContent='Try again';}})
+      .catch(()=>{btn.disabled=false;btn.textContent='Try again';});
+  }else{
+    const s=encodeURIComponent('Farewell reply — '+person);
+    const b=encodeURIComponent(txt+(email?('\n\nFrom: '+email):'')+'\n\n(card: '+person+')');
+    location.href=`mailto:${REPLY_EMAIL}?subject=${s}&body=${b}`;
+    btn.disabled=false;btn.textContent='Send privately 🔒';
+  }
+}
+const bgm=document.getElementById('bgm');let musicOn=false;
+function toggleMusic(){
+  const btn=document.getElementById('musicBtn'),lbl=document.getElementById('musicLbl');
+  if(musicOn){bgm.pause();musicOn=false;btn.classList.remove('playing');lbl.textContent='Play music';}
+  else{bgm.volume=0;
+    bgm.play().then(()=>{musicOn=true;btn.classList.add('playing');lbl.textContent='Pause music';
+      let v=0;const f=setInterval(()=>{v=Math.min(.35,v+.02);bgm.volume=v;if(v>=.35)clearInterval(f);},60);})
+      .catch(()=>{lbl.textContent='Music unavailable';setTimeout(()=>lbl.textContent='Play music',2000);});}
+}
+function burst(n=50){
+  const colors=['#5B9BD5','#2F5597','#f2b544','#ff9db0','#7ee0c0','#ffffff'];
+  for(let i=0;i<n;i++){
+    const c=document.createElement('div');c.className='confetti';
+    c.style.left=Math.random()*100+'vw';c.style.background=colors[i%colors.length];
+    c.style.animationDuration=(2+Math.random()*2)+'s';c.style.animationDelay=(Math.random()*.4)+'s';
+    document.body.appendChild(c);setTimeout(()=>c.remove(),4400);
+  }
+}
+const JOKES=[
+  {e:"🙃",t:"Feedback? Adorable.",p:"As if I'm going to read this. What's said is said — now live with it. 😌"},
+  {e:"🤷",t:"Nice try!",p:"This button goes straight to /dev/null. What is said is said. Kindly cope. 🫶"},
+  {e:"😎",t:"Feedback received…",p:"…and immediately ignored. I've resigned, remember? Zero notifications, infinite peace. 🎉"},
+  {e:"📴",t:"Out of office. Forever.",p:"Your feedback is very important to me — which is why I've filed it under 'Not My Problem Anymore.' 😄"}
+];
+function openFeedback(){
+  const j=JOKES[Math.floor(Math.random()*JOKES.length)];
+  fbEmoji.textContent=j.e;fbTitle.textContent=j.t;fbText.textContent=j.p;
+  document.getElementById('fbOverlay').classList.add('show');burst(40);
+}
+function closeFeedback(){document.getElementById('fbOverlay').classList.remove('show');}
+document.getElementById('sPeople').textContent=PEOPLE.length;
+document.getElementById('count').textContent=`${PEOPLE.length} personal notes inside 💌`;
+render(PEOPLE);
+</script>
 </body>
 </html>
