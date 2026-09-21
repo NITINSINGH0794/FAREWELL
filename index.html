@@ -626,7 +626,17 @@ const PEOPLE = [
 ];
 /* ============================================================ */
 /* --- sort cards alphabetically by name --- */
-PEOPLE.sort((a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'}));
+/* --- sort alphabetically, keep "To Everyone Else" last --- */
+2
+PEOPLE.sort((a,b)=>{
+3
+if(a.name==="To Everyone Else") return 1;
+4
+if(b.name==="To Everyone Else") return -1;
+5
+return a.name.localeCompare(b.name,'en',{sensitivity:'base'});
+6
+});
 const safeStore={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
                  set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const REACTS=[["love","❤️"],["like","👍"],["haha","😂"],["cel","🎉"],["clap","👏"]];
